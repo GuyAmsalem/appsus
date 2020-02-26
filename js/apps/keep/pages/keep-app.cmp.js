@@ -1,4 +1,5 @@
 import { keepService } from '../services/keep.service.js';
+import noteAdd from '../cmps/note-add.cmp.js'
 import noteList from '../cmps/note-list.cmp.js'
 
 
@@ -6,27 +7,29 @@ export default {
   template: `
     <section>
       <h1>Keep app</h1>
-      <note-list :notes="notesForDisplay"></note-list>
+      <note-add></note-add>
+      <note-list :userNotes="notesForDisplay"></note-list>
     </section>
   `,
   data() {
     return {
-        notes: [],
+        userNotes: [],
         filterBy: null,
     }
   },
   computed: {
     notesForDisplay(){
-      if (!this.filterBy) return this.notes;
+      if (!this.filterBy) return this.userNotes;
     }
   },
   created(){
-    keepService.getNotes()
-    .then(notes =>{
-      this.notes = notes
+    keepService.getUserNotes()
+    .then(userNotes =>{
+      this.userNotes = userNotes
     })  
   },
   components:{
     noteList,
+    noteAdd
   },
 }
