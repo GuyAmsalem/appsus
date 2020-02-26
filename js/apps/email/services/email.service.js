@@ -1,5 +1,5 @@
-import {utilService} from '../general/services/util.service.js'
-import {storageService} from '../general/services/storage.service.js'
+import {utilService} from '../../../general/services/util.service.js'
+import {storageService} from '../../../general/services/storage.service.js'
 const KEY = 'emailDB'
 
 var emails = _createEmails()

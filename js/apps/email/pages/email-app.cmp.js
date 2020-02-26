@@ -1,10 +1,10 @@
-import emailService from './sevices/email.service.js'
+import {emailService} from '../services/email.service.js'
 
 export default {
     template: `
     <section>
       <h1>Mail app</h1>
-      <pre>emails</pre>
+      <pre>{{emails}}</pre>
     </section>
     `,
     data() {
