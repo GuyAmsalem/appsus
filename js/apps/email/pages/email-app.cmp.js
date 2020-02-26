@@ -1,10 +1,12 @@
-import {emailService} from '../services/email.service.js'
+import { emailService } from '../services/email.service.js'
+import  emailList from '../cmps/email-list.cmp.js'
 
 export default {
     template: `
     <section>
       <h1>Mail app</h1>
-      <pre>{{emails}}</pre>
+      <email-list :emails="emails"></email-list>    
+     
     </section>
     `,
     data() {
@@ -13,12 +15,15 @@ export default {
             filterBy: null
         }
     },
-    created(){
+    created() {
         emailService.getEmails()
             .then(emails => {
                 this.emails = emails
             })
     },
+    components: {
+        emailList
+    }
 
-   
+
 }
