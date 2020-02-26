@@ -2,12 +2,11 @@ import notePreview from './note-preview.cmp.js'
 
 export default {
     template: `
-    <section class="cars-container">
-        <h2>Cars List</h2>
+    <section class="notes-container">
+        <h2>Note List</h2>
         <ul>
             <li v-for="(currNote, idx) in notes" >
-                <car-preview :car="currCar"></car-preview>
-               
+                <note-preview :note="currNote"></note-preview> 
             </li>
         </ul>
     </section>

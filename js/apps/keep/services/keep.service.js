@@ -5,10 +5,14 @@ const NOTES_KEY = 'notes'
 
 var notes = _createNotes()
 
+function getNotes(){
+    return Promise.resolve(notes)
+}
+
 function _createNotes() {
     var notes = storageService.load(NOTES_KEY)
     if (!notes || !notes.length) {
-        notes = [_createNotes('Free i feel free like you promise i be'), _createCar('Total Football')]
+        notes = [_createNote('Free i feel free like you promise i be'), _createNote('Total Football')]
         storageService.store(NOTES_KEY, notes)
     }
     return notes;
@@ -19,7 +23,11 @@ function _createNote(txt) {
         type: "NoteText",
         isPinned: false,
         info: {
-            txt: 'txt'
+            txt,
         }
     }
+}
+
+export const keepService = {
+    getNotes,
 }
