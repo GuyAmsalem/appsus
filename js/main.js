@@ -1,6 +1,6 @@
 import {router} from './routes.js'
-import mainNavBar from './cmps/main-nav-bar.cmp.js'
-import userMsg from './cmps/user-msg.cmp.js'
+import mainNavBar from './general/cmps/main-nav-bar.cmp.js'
+import userMsg from './general/cmps/user-msg.cmp.js'
 
 new Vue({
     el: '#app',
