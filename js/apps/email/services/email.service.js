@@ -1,14 +1,14 @@
 import {utilService} from '../../../general/services/util.service.js'
 import {storageService} from '../../../general/services/storage.service.js'
-const KEY = 'emailDB'
+const EMAIL_KEY = 'emailDB'
 
 var emails = _createEmails()
 
 function _createEmails() {
-    var emails = storageService.load(KEY)
+    var emails = storageService.load(EMAIL_KEY)
     if (!emails || !emails.length){
         emails = [_createEmail(), _createEmail()]
-        storageService.store(KEY, emails)
+        storageService.store(EMAIL_KEY, emails)
     }
     return emails
 }
@@ -16,8 +16,9 @@ function _createEmails() {
 function _createEmail(){
     return {
         id: utilService.makeId(),
-        subject: 'Wassap?', 
-        body: 'Pick up!', 
+        sender: 'Guy',
+        subject: 'Wassap brooooooooooooooooooooooooo?', 
+        body: 'Pick up nowwwwwwwww!', 
         isRead: false, 
         sentAt : 1551133930594
     }
@@ -35,7 +36,7 @@ function getById(emailId) {
 function addEmail(email) {
     email.id = utilService.makeId()
     emails.push(email);
-    storageService.store(KEY, emails)
+    storageService.store(EMAIL_KEY, emails)
     return Promise.resolve(email)
 } 
 
@@ -43,7 +44,7 @@ function removeEmail(emailId) {
     const idx = emails.findIndex(email => email.id === emailId)
     if(idx === -1) return Promise.reject('DID NOT REMOVE EMAIL')
     emails.splice(idx, 1);
-    storageService.store(KEY, emails)
+    storageService.store(EMAIL_KEY, emails)
     return Promise.resolve('EMAIL REMOVED')
 }
 

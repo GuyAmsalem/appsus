@@ -24,6 +24,12 @@ function getTodayDate() {
     return today;
 }
 
+function getShortTxt(txt, numOfChars) {
+    let txtToShow = txt.substring(0, numOfChars-3);
+    txtToShow += '...';
+    return txtToShow; 
+}
+
 function makeLorem(length) {
 
     var randStr = '';
@@ -45,7 +51,8 @@ export const utilService = {
     getRandomInt,
     makeLorem,
     makeId,
-    getTodayDate
+    getTodayDate,
+    getShortTxt
 }
 
 
@@ -64,3 +71,4 @@ function _createWord(length) {
 
     return word;
 }
+
