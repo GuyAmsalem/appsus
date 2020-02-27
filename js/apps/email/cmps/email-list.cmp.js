@@ -14,6 +14,7 @@ export default {
     </div>
     </section>
         `,
+        props: ['emails'],
         data(){
             return {
                 selectedEmailId: null
@@ -31,7 +32,7 @@ export default {
                 this.selectedEmailId = null
             }
         },
-        props:['emails'],
+       
         components: {
             emailPreview,
             emailExtended

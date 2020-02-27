@@ -20,7 +20,13 @@ function _createEmail(sender){
         subject: 'Wassap brooooooooooooooooooooooooo?', 
         body: utilService.makeLorem(100), 
         isRead: false, 
-        sentAt : 1551133930594
+        sentAt : 1551133930594,
+        folders: {
+            inbox: true,
+            starred: false,
+            sentMails: false,
+            drafts: false
+        }
         
     }
 }
