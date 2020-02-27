@@ -2,16 +2,14 @@ import notePreview from './note-preview.cmp.js'
 
 export default {
     template: `
-    <section class="notes-container">
-        <h2>Note List</h2>
-        <ul>
-            <li v-for="(currNote, idx) in notes" >
+    <section class="user-notes-container">
+        <h2>USER Note List</h2>
+            <template v-for="(currNote, idx) in userNotes" >
                 <note-preview :note="currNote"></note-preview> 
-            </li>
-        </ul>
+            </template>
     </section>
     `,
-    props: ['notes'],
+    props: ['userNotes'],
     components: {
         notePreview
     }
