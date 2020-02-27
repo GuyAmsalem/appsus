@@ -1,15 +1,25 @@
+import noteText from './note-cmps/note-text.cmp.js'
+import noteImg from './note-cmps/note-img.cmp.js'
+import noteVideo from './note-cmps/note-video.cmp.js'
+
+
 export default {
     template: `
         <div class="user-note-container">
-            <h1>{{note.info.txt}}</h1>
-            
-            <button >x</button>      
+            <component
+            :is="note.type" 
+            :info="note.info"
+            >
+
+
+            </component>
+            <button @click.stop="$emit('remove')">x</button>      
         </div>
     `,
     props: ['note'],
-    // methods: {
-    //     removeNote(ev){
-    //         ev.stopPropagation
-    //     }
-    // }
+    components: {
+        noteText,
+        noteImg,
+        noteVideo
+    }
 }

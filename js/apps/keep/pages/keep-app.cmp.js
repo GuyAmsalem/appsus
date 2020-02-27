@@ -8,7 +8,7 @@ export default {
     <section>
       <h1>Keep app</h1>
       <note-add></note-add>
-      <note-list :userNotes="notesForDisplay"></note-list>
+      <note-list :userNotes="notesForDisplay" @remove="removeNote"></note-list>
     </section>
   `,
   data() {
@@ -27,6 +27,14 @@ export default {
     .then(userNotes =>{
       this.userNotes = userNotes
     })  
+  },
+  methods: {
+    removeNote(noteId){
+        keepService.removeNote(noteId)
+        .then(deletedNoteId =>{
+          console.log(deletedNoteId, 'is gone')
+        })
+    }
   },
   components:{
     noteList,
