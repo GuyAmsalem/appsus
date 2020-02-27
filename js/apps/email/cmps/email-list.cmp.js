@@ -7,9 +7,9 @@ export default {
     <div v-for="currEmail in emails" @click="extendEmail(currEmail.id)">
         <email-preview :email="currEmail"></email-preview>
         <email-extended
-                v-if="selectedEmailId === currEmail.id"
-                :email="currEmail"
-                @click.native="closeExtendedEmail">
+        v-if="selectedEmailId === currEmail.id"
+        :email="currEmail"
+        @click.native="closeExtendedEmail">
                 </email-extended>
     </div>
     </section>
@@ -29,8 +29,6 @@ export default {
             },
             closeExtendedEmail(){
                 this.selectedEmailId = null
-                console.log('closing..');
-                
             }
         },
         props:['emails'],

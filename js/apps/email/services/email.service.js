@@ -7,20 +7,21 @@ var emails = _createEmails()
 function _createEmails() {
     var emails = storageService.load(EMAIL_KEY)
     if (!emails || !emails.length){
-        emails = [_createEmail(), _createEmail()]
+        emails = [_createEmail('ran'), _createEmail('guy')]
         storageService.store(EMAIL_KEY, emails)
     }
     return emails
 }
 
-function _createEmail(){
+function _createEmail(sender){
     return {
         id: utilService.makeId(),
-        sender: 'Guy',
+        sender,
         subject: 'Wassap brooooooooooooooooooooooooo?', 
-        body: 'Pick up nowwwwwwwww!', 
+        body: utilService.makeLorem(100), 
         isRead: false, 
         sentAt : 1551133930594
+        
     }
 }
 
@@ -43,9 +44,9 @@ function addEmail(email) {
 function removeEmail(emailId) {
     const idx = emails.findIndex(email => email.id === emailId)
     if(idx === -1) return Promise.reject('DID NOT REMOVE EMAIL')
-    emails.splice(idx, 1);
+    const deletedMails = emails.splice(idx, 1);
     storageService.store(EMAIL_KEY, emails)
-    return Promise.resolve('EMAIL REMOVED')
+    return Promise.resolve(deletedMails[0])
 }
 
 export const emailService = {

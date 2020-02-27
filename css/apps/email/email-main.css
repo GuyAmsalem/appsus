@@ -1,0 +1,6 @@
+@import "./cmps/email-preview.css";
+
+.email-app-container {
+    display: grid;
+    grid-template-columns: 1fr 5fr
+}
