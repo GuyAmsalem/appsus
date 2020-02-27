@@ -10,10 +10,11 @@ export default {
                     :is="input.type" 
                     :info="input.info"
                     @changed="setAns($event)"
-                    @enter.native="saveNote"
+                    @done="saveNote"
                     ></component>
         </form>
-        {{ans}}
+        <h1>{{ans}}</h1>
+        {{this.note}}
     </section>
     `,
     props: [''],
@@ -26,14 +27,15 @@ export default {
     },
     methods: {
       setAns(ans){
-          this.note.info.txt = ans
+          if(this.note.type === 'noteText') this.note.info.txt = ans
       },
       saveNote(){
-          
+          console.log('saving')
           //maybe deep copy
           keepService.saveNote(this.note)
           .then(note => {
-          console.log(note, 'is saved')    
+          console.log(note, 'is saved')
+          this.note = keepService.getEmptyNote()    
           })
       }
     },

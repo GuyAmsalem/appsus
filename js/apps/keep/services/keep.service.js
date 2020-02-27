@@ -9,7 +9,7 @@ var inputs = [
     {
         type:'noteText',
         info: {
-            placeholder: 'Whats on your Mind?',
+            placeholder: 'What\'s on your Mind?',
             txt: ''
         }
     },
@@ -35,9 +35,10 @@ function getInputs(){
     return Promise.resolve(inputs)
 }
 
-function getEmptyNote(){
+function getEmptyNote(type = 'noteText'){
     var emptyNote =  {
-        type: '',
+        id: null,
+        type,
         isPinned: false,
         info: {}
     }
@@ -56,7 +57,7 @@ function _createNotes() {
 function _createNote(txt) {
     return  {
         id: utilService.makeId(),
-        type: 'NoteText',
+        type: 'noteText',
         isPinned: false,
         info: {
             txt,

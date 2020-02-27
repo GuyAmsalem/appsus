@@ -6,7 +6,8 @@ export default {
                 <input type="text" 
                 v-model="txt" 
                 :placeholder="info.placeholder"
-                @input="$emit('changed', txt)">
+                @input="$emit('changed', txt)"
+                @keyup.enter="$emit('done')">
         </template>
     </div>    
     `,
