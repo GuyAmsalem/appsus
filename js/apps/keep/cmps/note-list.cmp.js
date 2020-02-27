@@ -3,9 +3,8 @@ import notePreview from './note-preview.cmp.js'
 export default {
     template: `
     <section class="user-notes-container">
-        <h2>USER Note List</h2>
             <template v-for="(currNote, idx) in userNotes" >
-                <note-preview @removeNote="$emit('remove', currNote.id)" :note="currNote"></note-preview> 
+                <note-preview @remove="$emit('remove', currNote.id)" :note="currNote"></note-preview> 
             </template>
     </section>
     `,

@@ -1,18 +1,25 @@
 import { keepService } from '../services/keep.service.js';
-import noteText from './note-text.cmp.js'
+import textInput from './text-input.cmp.js'
+import imgInput from './img-input.cmp.js'
+import videoInput from './video-input.cmp.js'
+
 
 export default {
     template: `
-    <section class="note-add-container">
-        <h2>Add Note</h2>
+    <section class="note-add-container flex">
         <form @submit.prevent="saveNote" v-for="(input, idx) in inputs">
                     <component 
                     :is="input.type" 
                     :info="input.info"
                     @changed="setValue($event)"
+                    v-if="input.type === type"
                     ></component>
-                <i class="fas fa-font"></i>
         </form>
+        <div class="note-selection">
+            <i @click="changeType('textInput')" class="fas fa-font"></i>
+            <i @click="changeType('imgInput')" class="far fa-image"></i>
+            <i @click="changeType('videoInput')" class="fas fa-video"></i>
+        </div>
         {{this.note}}
     </section>
     `,
@@ -20,13 +27,21 @@ export default {
     data(){
         return {
           inputs: null,
-        //   val: null,
+          type: 'textInput',
           note: keepService.getEmptyNote()
         }
     },
     methods: {
+      changeType(type){
+        this.type = type;
+        if (this.type === 'textInput') this.note =  keepService.getEmptyNote('noteText')
+        if (this.type === 'imgInput') this.note =  keepService.getEmptyNote('noteImg')
+        if (this.type === 'videoInput') this.note =  keepService.getEmptyNote('noteVideo')
+      },  
       setValue(val){
           if(this.note.type === 'noteText') this.note.info.txt = val
+          if(this.note.type === 'noteImg') this.note.info.url = val
+          if(this.note.type === 'noteVideo') this.note.info.url = val
       },
       saveNote(){
           console.log('saving')
@@ -45,7 +60,9 @@ export default {
         })          
     },
     components: {
-        noteText
+        textInput,
+        imgInput,
+        videoInput
     }
 }
 
