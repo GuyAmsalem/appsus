@@ -12,7 +12,8 @@ export default {
     props: ['userNotes'],
     components: {
         notePreview
-    }
+    },
+
 }
 
 

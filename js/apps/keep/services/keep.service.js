@@ -22,6 +22,7 @@ function saveNote(note){
 
 function _addNote(note){
     note.id = utilService.makeId()
+    // if(note.type === 'noteText') note.info.txt = val
     userNotes.unshift(note);
     storageService.store(USER_NOTES_KEY, userNotes)
     return Promise.resolve(note)
@@ -42,6 +43,7 @@ function getEmptyNote(type = 'noteText'){
         isPinned: false,
         info: {}
     }
+    if(type === 'noteText') emptyNote.info.txt = ''
     return emptyNote;
 }
 

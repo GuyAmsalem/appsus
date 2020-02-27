@@ -5,15 +5,14 @@ export default {
     template: `
     <section class="note-add-container">
         <h2>Add Note</h2>
-        <form @submit.prevent v-for="(input, idx) in inputs">
-            <component 
+        <form @submit.prevent="saveNote" v-for="(input, idx) in inputs">
+                    <component 
                     :is="input.type" 
                     :info="input.info"
-                    @changed="setAns($event)"
-                    @done="saveNote"
+                    @changed="setValue($event)"
                     ></component>
+                    <i class="fas fa-font"></i>
         </form>
-        <h1>{{ans}}</h1>
         {{this.note}}
     </section>
     `,
@@ -21,13 +20,13 @@ export default {
     data(){
         return {
           inputs: null,
-          ans: null,
+        //   val: null,
           note: keepService.getEmptyNote()
         }
     },
     methods: {
-      setAns(ans){
-          if(this.note.type === 'noteText') this.note.info.txt = ans
+      setValue(val){
+          if(this.note.type === 'noteText') this.note.info.txt = val
       },
       saveNote(){
           console.log('saving')

@@ -7,7 +7,7 @@ export default {
                 v-model="txt" 
                 :placeholder="info.placeholder"
                 @input="$emit('changed', txt)"
-                @keyup.enter="$emit('done')">
+                >
         </template>
     </div>    
     `,
