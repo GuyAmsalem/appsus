@@ -11,7 +11,7 @@ export default {
                     :info="input.info"
                     @changed="setValue($event)"
                     ></component>
-                    <i class="fas fa-font"></i>
+                <i class="fas fa-font"></i>
         </form>
         {{this.note}}
     </section>

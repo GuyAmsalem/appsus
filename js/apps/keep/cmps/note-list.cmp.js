@@ -5,7 +5,7 @@ export default {
     <section class="user-notes-container">
         <h2>USER Note List</h2>
             <template v-for="(currNote, idx) in userNotes" >
-                <note-preview :note="currNote"></note-preview> 
+                <note-preview @removeNote="$emit('remove', currNote.id)" :note="currNote"></note-preview> 
             </template>
     </section>
     `,

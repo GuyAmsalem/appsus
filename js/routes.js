@@ -14,3 +14,16 @@ const routes = [
 ]
 
 export const router = new VueRouter({routes})
+
+
+
+
+
+/*
+
+/email/compose         ===> create
+/email/:id             ===> details
+/email/list/:filterBy? ===> list
+
+
+*/
