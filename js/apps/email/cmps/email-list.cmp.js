@@ -1,25 +1,46 @@
 import emailPreview from './email-preview.cmp.js'
+import emailExtended from './email-extended.cmp.js'
 
 export default {
     template: `
-    <section class="emails-container">
-    <div v-for="currEmail in emails">
+    <section v-if="emails" class="emails-container">
+    <div v-for="currEmail in emails" @click="extendEmail(currEmail.id)">
         <email-preview :email="currEmail"></email-preview>
-        </div>
-        </section>
+        <email-extended
+                v-if="selectedEmailId === currEmail.id"
+                :email="currEmail"
+                @click.native="closeExtendedEmail">
+                </email-extended>
+    </div>
+    </section>
         `,
         data(){
             return {
-                selectedEmailId: null,
+                selectedEmailId: null
+            }
+        },
+        methods: {
+            extendEmail(emailId){
+                if (this.selectedEmailId === emailId) {
+                    this.selectedEmailId = null
+                } else {
+                    this.selectedEmailId = emailId
+                }
+            },
+            closeExtendedEmail(){
+                this.selectedEmailId = null
+                console.log('closing..');
+                
             }
         },
         props:['emails'],
         components: {
-            emailPreview
+            emailPreview,
+            emailExtended
         }
     }
     
-    //TODO: add cmp with 'if the email is clicked condution' in the for loop 
-    
-
+    //TODO: close the extended after another click
+    //      make delete and details buttons 
+    //      attention to the txt length
     

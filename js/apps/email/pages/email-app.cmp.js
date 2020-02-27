@@ -6,7 +6,7 @@ export default {
     <section>
       <h1>Mail app</h1>
       <email-list :emails="emails"></email-list>    
-     
+    
     </section>
     `,
     data() {
