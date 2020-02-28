@@ -27,20 +27,26 @@ var inputs = [
             url: ''
         }
     },
+    {
+        type:'todosInput',
+        info: {
+            placeholder: 'Enter your tasks(seperate them with comma ",")',
+            todos: ''
+        }
+    },
 ]
 
-function saveNote(note){
-  if(note.id) return
-  else return _addNote(note)
+function formatNoteTodos(noteTodos) {
+  let todos = noteTodos.info.todos.split(', ')
+  noteTodos.info.todos = todos.map(todo => {
+      return {txt: todo, isDone: false}
+  });
+  return noteTodos
 }
 
-function _addNote(note){
-    note.id = utilService.makeId()
-    // if(note.type === 'noteText') note.info.txt = val
-    userNotes.unshift(note);
-    storageService.store(USER_NOTES_KEY, userNotes)
-    return Promise.resolve(note)
-}
+
+
+
 
 function getUserNotes(){
     return Promise.resolve(userNotes)
@@ -55,11 +61,15 @@ function getEmptyNote(type = 'noteText'){
         id: null,
         type,
         isPinned: false,
-        info: {}
+        info: {},
+        style: {
+            backgroundColor: '#ffffff'
+        }
     }
     if(type === 'noteText') emptyNote.info.txt = ''
     if(type === 'noteImg') emptyNote.info.url = ''
     if(type === 'noteVideo') emptyNote.info.url = ''
+    if(type === 'noteTodos') emptyNote.info.todos = ''
     return emptyNote;
 }
 
@@ -70,6 +80,30 @@ function removeNote(noteId){
     storageService.store(USER_NOTES_KEY, userNotes)
     return Promise.resolve(deletedNote[0].id)
 }
+
+function saveNote(note){
+    if(note.type === 'noteTodos' && (!Array.isArray(note.info.todos))) note = formatNoteTodos(note)
+    if(note.id) return _editNote(note)
+    else return _addNote(note)
+  }
+
+function _addNote(note){
+    note.id = utilService.makeId()
+    // if(note.type === 'noteTodos') note = formatNoteTodos(note)
+    userNotes.unshift(note);
+    storageService.store(USER_NOTES_KEY, userNotes)
+    return Promise.resolve(note)
+}
+
+
+function _editNote(note) {
+    const idx = userNotes.findIndex(currNote => currNote.id === note.id);
+    userNotes.splice(idx, 1, note)
+    storageService.store(USER_NOTES_KEY, userNotes)
+    return Promise.resolve(note)
+} 
+
+
 
 function _createNotes() {
     var userNotes = storageService.load(USER_NOTES_KEY)

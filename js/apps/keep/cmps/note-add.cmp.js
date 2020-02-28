@@ -2,6 +2,8 @@ import { keepService } from '../services/keep.service.js';
 import textInput from './text-input.cmp.js'
 import imgInput from './img-input.cmp.js'
 import videoInput from './video-input.cmp.js'
+import todosInput from './todos-input.cmp.js'
+
 
 
 export default {
@@ -19,6 +21,7 @@ export default {
             <i @click="changeType('textInput')" class="fas fa-font"></i>
             <i @click="changeType('imgInput')" class="far fa-image"></i>
             <i @click="changeType('videoInput')" class="fas fa-video"></i>
+            <i @click="changeType('todosInput')" class="fas fa-list"></i>
         </div>
         {{this.note}}
     </section>
@@ -37,11 +40,13 @@ export default {
         if (this.type === 'textInput') this.note =  keepService.getEmptyNote('noteText')
         if (this.type === 'imgInput') this.note =  keepService.getEmptyNote('noteImg')
         if (this.type === 'videoInput') this.note =  keepService.getEmptyNote('noteVideo')
+        if (this.type === 'todosInput') this.note =  keepService.getEmptyNote('noteTodos')
       },  
       setValue(val){
           if(this.note.type === 'noteText') this.note.info.txt = val
           if(this.note.type === 'noteImg') this.note.info.url = val
           if(this.note.type === 'noteVideo') this.note.info.url = val
+          if(this.note.type === 'noteTodos') this.note.info.todos = val
       },
       saveNote(){
           console.log('saving')
@@ -62,7 +67,8 @@ export default {
     components: {
         textInput,
         imgInput,
-        videoInput
+        videoInput,
+        todosInput
     }
 }
 
