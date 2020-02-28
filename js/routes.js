@@ -12,9 +12,10 @@ const routes = [
     { path: '/keep', component: keepApp },
     { path: '/email', component: emailApp,
     children:[
-        { path: ':filterBy?', component: emailMainPage},
+        { path: '', component: emailMainPage},
+        { path: 'details/:id', component: emailDetails},
         { path: 'compose', component: emailCompose},
-        { path: ':id', component: emailDetails},
+        { path: 'list/:filterBy?', component: emailMainPage},   
     ] 
     },
     { path: '/about', component: about },

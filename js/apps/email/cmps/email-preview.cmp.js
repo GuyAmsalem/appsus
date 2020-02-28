@@ -3,7 +3,7 @@ import {utilService} from '../../../general/services/util.service.js'
 export default {
     template: `
         <article v-if="email" class="email-pre-card">
-            <p>{{email.sender}}</p>
+            <p>{{email.sender.name}}</p>
             <p>{{this.previewTxt}}</p>
             <p>{{email.sentAt}}</p>
         </article>
@@ -27,6 +27,7 @@ export default {
     created() {
       this.previewTxt = this.getPreviewTxt()
     }
+   
 
     
 

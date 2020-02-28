@@ -7,7 +7,7 @@ export default {
         <section class="email-extended-container">
         <button @click="removeEmail">x</button>
         <h2>{{email.subject}}</h2>
-        <h3>{{email.sender}}</h3>
+        <h3>{{email.sender.name}} <span><{{email.sender.emailAdrress}}></span></h3>
         <p>{{emailBodyTxt}}</p>
         </section>
     `,

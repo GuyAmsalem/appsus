@@ -1,13 +1,23 @@
 import {utilService} from '../../../general/services/util.service.js'
 import {storageService} from '../../../general/services/storage.service.js'
-const EMAIL_KEY = 'emailDB'
 
+export const emailService = {
+    getEmails,
+    getById,
+    addEmail,
+    removeEmail,
+    getEmptyEmail,
+    sendEmail
+}
+
+const EMAIL_KEY = 'emailDB'
 var emails = _createEmails()
 
 function _createEmails() {
     var emails = storageService.load(EMAIL_KEY)
     if (!emails || !emails.length){
-        emails = [_createEmail('ran'), _createEmail('guy')]
+        emails = [_createEmail({name:'ran',emailAdrress: 'ran@gmail.com'}),
+        _createEmail({name:'guy',emailAdrress: 'guy@gmail.com'})]
         storageService.store(EMAIL_KEY, emails)
     }
     return emails
@@ -16,19 +26,57 @@ function _createEmails() {
 function _createEmail(sender){
     return {
         id: utilService.makeId(),
-        sender,
+        sender : {
+            name: sender.name,
+            emailAdrress: sender.emailAdrress
+        },
+        recipient: 'Guy',
         subject: 'Wassap brooooooooooooooooooooooooo?', 
         body: utilService.makeLorem(100), 
         isRead: false, 
         sentAt : 1551133930594,
         folders: {
             inbox: true,
-            starred: false,
-            sentMails: false,
-            drafts: false
+            star: false,
+            sentMail: false,
+            draft: false
         }
         
     }
+}
+
+function getEmptyEmail() {
+    return {
+        id: utilService.makeId(),
+        sender : {
+            name: 'Guy',
+            emailAdrress: 'guy@gmail.com'
+        },
+        recipient: null,
+        subject: null, 
+        body: null, 
+        isRead: false, 
+        sentAt : null,
+        folders: {
+            inbox: false,
+            star: false,
+            sentMail: false,
+            draft: false
+        }
+    }
+}
+
+function sendEmail(email){
+    if (email.recipient === 'guy@gmail.com'){
+        email.folders.inbox = true
+    } else {
+        email.folders.sentMail = true
+    }
+    email.sentAt = Date.now()
+    emails.push(email)
+    storageService.store(EMAIL_KEY, emails)
+    return Promise.resolve(email)
+    
 }
 
 function getEmails() {
@@ -55,10 +103,4 @@ function removeEmail(emailId) {
     return Promise.resolve(deletedMails[0])
 }
 
-export const emailService = {
-    getEmails,
-    getById,
-    addEmail,
-    removeEmail
-}
 
