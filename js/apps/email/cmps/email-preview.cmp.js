@@ -4,8 +4,8 @@ export default {
     template: `
         <article v-if="email" class="email-pre-card">
             <p>{{email.sender.name}}</p>
-            <p>{{this.previewTxt}}</p>
-            <p>{{email.sentAt}}</p>
+            <p>{{previewTxt}}</p>
+            <p>{{sentAtDate}}</p>
         </article>
     `,
     props: ['email'],
@@ -21,11 +21,13 @@ export default {
             const body = this.email.body
             const txt = subject + ' - ' + body
             
-            return utilService.getShortTxt(txt, 50) 
+            this.previewTxt = utilService.getShortTxt(txt, 50) 
         },
+     
     },
     created() {
-      this.previewTxt = this.getPreviewTxt()
+      this.getPreviewTxt()
+      this.sentAtDate = moment(this.email.sendAt).format('LT');
     }
    
 

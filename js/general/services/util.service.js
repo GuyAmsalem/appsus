@@ -1,3 +1,12 @@
+export const utilService = {
+    getRandomInt,
+    makeLorem,
+    makeId,
+    getTodayDate,
+    getShortTxt,
+    getTimeByTimestamp
+}
+
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -25,9 +34,19 @@ function getTodayDate() {
 }
 
 function getShortTxt(txt, numOfChars) {
-    let txtToShow = txt.substring(0, numOfChars-3);
+    let txtToShow = txt.substring(0, numOfChars - 3);
     txtToShow += '...';
-    return txtToShow; 
+    return txtToShow;
+}
+
+function getTimeByTimestamp(timestamp) {
+    var date = new Date(timestamp * 1000);
+    var year = date.getFullYear();
+    var month = date.getMonth()+1;
+    var day = date.getDay();
+    var hour = date.getHours();
+    var minute = date.getMinutes();
+    return day + '-' + month + '-' + year + '  ' + hour + ':' + minute
 }
 
 function makeLorem(length) {
@@ -47,13 +66,6 @@ function makeLorem(length) {
     return randStr;
 }
 
-export const utilService = {
-    getRandomInt,
-    makeLorem,
-    makeId,
-    getTodayDate,
-    getShortTxt
-}
 
 
 function _getRandChar() {

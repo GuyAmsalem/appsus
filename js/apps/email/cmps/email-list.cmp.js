@@ -14,7 +14,7 @@ export default {
     </div>
     </section>
         `,
-        props: ['emails'],
+        props: ['emails'],  
         data(){
             return {
                 selectedEmailId: null
