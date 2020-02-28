@@ -121,6 +121,9 @@ function _createNote(txt) {
         isPinned: false,
         info: {
             txt,
+        },
+        style:{
+            backgroundColor: '#e98074'
         }
     }
 }

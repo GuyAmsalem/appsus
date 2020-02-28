@@ -11,7 +11,7 @@ export default {
                     <i class="fas fa-list"></i>
                     <nav class="note-features flex space-around">
                         <i class="fas fa-thumbtack"></i>
-                        <i class="fas fa-palette"></i>
+                        <i @click="$emit('color')" class="fas fa-palette"></i>
                         <i class="fas fa-edit" @click="$emit('edit')"></i>
                         <i class="fas fa-trash-alt" @click="$emit('remove')"></i>
                     </nav>
