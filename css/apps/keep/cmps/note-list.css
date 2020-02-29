@@ -1,9 +1,33 @@
 .user-notes-container{
     padding: 20px;
-    background-color: #00bdf7;
-    margin: 0 25px;
+    background-color: #d8c3a5;
+    margin: 0 15px;
     transition: .3s;
     column-count: 4;
     column-gap: 1rem;
     vertical-align: baseline;
+}
+
+.pin-title{
+    text-align: center;
+    font-size: 1.7rem;
+}
+
+@media (max-width: 923px){
+    .user-notes-container {
+        column-count: 3;
+    }
+}
+
+@media (max-width: 873px){
+    .user-notes-container {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 545px){
+    .user-notes-container {
+        column-count: 1;
+        
+    }
 }

@@ -4,3 +4,10 @@
     font-weight: normal;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'bowlby';
+    src: url("../fonts/bowlby-regular.ttf");
+    font-weight: normal;
+    font-style: normal;
+}

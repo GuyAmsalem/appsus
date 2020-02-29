@@ -1,8 +1,8 @@
 import { keepService } from '../services/keep.service.js';
-
+import {eventBus, EVENT_SHOW_MSG} from '../../../general/services/event-bus.service.js'
 export default {
     template: `     
-          <div>
+          <div class="note-edit-container">
             <form @submit.prevent="saveNote" >
                 <input type="text" v-model="newData" 
                     placeholder="Please enter your changes"> 
@@ -39,7 +39,7 @@ export default {
             if (this.note.type === 'noteTodos') this.note.info.todos = this.newData
             keepService.saveNote(this.note)
             .then(note =>{
-                console.log(note.id, 'updated!')
+                eventBus.$emit(EVENT_SHOW_MSG, { txt:'Note: ' + this.note.id + ' updated', type: 'success' })
             })
         }
     },

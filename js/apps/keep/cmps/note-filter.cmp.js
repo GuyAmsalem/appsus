@@ -4,7 +4,8 @@ export default {
     <section class="note-filter">
         <input type="text" 
             placeholder="Search Note" 
-            v-model="filterBy.txt" 
+            v-model="filterBy.txt"
+            class="search-note-input" 
         />
     </section>
     `,

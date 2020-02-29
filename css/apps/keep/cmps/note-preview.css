@@ -5,7 +5,7 @@
     box-shadow: -1px 3px 5px 0px rgba(204,204,204,1);
     margin: 15px;
     break-inside: avoid;
-    
+    font-size: 1.3rem;
 }
 
 
@@ -15,6 +15,15 @@
 
 .note-features i {
     cursor: pointer;
+    transition: .3s;
+}
+
+.fas.fa-thumbtack.pinned{
+    color: red;
+}
+
+.fas.fa-trash-alt.colored{
+    color: rgb(85, 84, 84);
 }
 
 .note-icons-container i {

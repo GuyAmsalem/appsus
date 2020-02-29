@@ -1,7 +1,9 @@
+@import "cmps/keep-app.css";
 @import "cmps/note-img.css";
 @import "cmps/note-add.css";
 @import "cmps/note-text.css";
 @import "cmps/note-todos.css";
-@import "./keep-base.css";
+@import "cmps/note-filter.css";
+@import "cmps/note-edit.css";
 @import "cmps/note-preview.css";
 @import "cmps/note-list.css";

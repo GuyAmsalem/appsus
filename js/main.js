@@ -7,9 +7,10 @@ new Vue({
     router,
     template: `
         <section class="appsus-app">
+        <div class="screen" @click="toggleMenu"></div>
             <header>
                 <main-nav-bar></main-nav-bar>
-                <user-msg ></user-msg>
+                <user-msg></user-msg>
             </header>
             <router-view></router-view>
             <footer>
@@ -20,5 +21,10 @@ new Vue({
     components:{
         mainNavBar,
         userMsg,
+    },
+    methods: {
+       toggleMenu(){
+        document.body.classList.toggle('menu-open')
+       }
     }
 })

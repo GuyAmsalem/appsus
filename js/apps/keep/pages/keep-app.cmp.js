@@ -6,7 +6,7 @@ import noteFilter from '../cmps/note-filter.cmp.js'
 export default {
   template: `
     <section v-if="userNotes">
-      <h1>Keep app</h1>
+      <h1 class="keep-title">Appsus Keep</h1>
       <note-add></note-add>
       <note-filter @set-filter="setFilter"></note-filter>
       <note-list :userNotes="notesForDisplay" @remove="removeNote"></note-list>
