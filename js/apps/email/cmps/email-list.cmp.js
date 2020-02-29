@@ -41,7 +41,3 @@ export default {
         }
     }
     
-    //TODO: close the extended after another click
-    //      make delete and details buttons 
-    //      attention to the txt length
-    

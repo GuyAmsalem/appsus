@@ -1,6 +1,10 @@
 .email-pre-card {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px grey solid;
-    border-top: 1px grey solid;
 }
+
+.email-pre-card >* {
+    padding: 0 5px;
+}
+
+

@@ -3,12 +3,12 @@
 export default {
     template: `
     <section class="email-filter">
-        <input type="text" 
+        <input class="email-filter-text" type="text" 
             placeholder="Search Mail" 
             v-model="filterBy.txt" 
         /> 
 
-        <select v-model="filterBy.read">
+        <select class="email-filter-select" v-model="filterBy.read">
             <option selected>All</option>
             <option>Read</option>
             <option>Unread</option>
@@ -29,9 +29,7 @@ export default {
             deep: true
         }, 
         '$route.params.filterBy'(to){
-           this.filterBy.folder = to
-           console.log(this.filterBy);
-           
+           this.filterBy.folder = to           
         }
      },
      methods:{

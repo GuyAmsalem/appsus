@@ -8,7 +8,7 @@ export default {
     <section v-if="emails" class="email-app-container">
       <div class="email-side-nav-container"> 
         <router-link to="/email/compose">
-            <button>Compose</button>
+            <button class="compose-btn">Compose</button>
         </router-link>
         <email-side-nav :unread="unreadEmails"></email-side-nav>
       </div>
@@ -43,13 +43,7 @@ export default {
                 .then(mail => {
                     console.log(mail.id, 'deleted')
                 })
-            // .then(()=>{
-            //     console.log(`Car ${emailId} deleted succesfully`);
-            //     eventBus.$emit(EVENT_SHOW_MSG, {
-            //         txt: `Car ${emailId} deleted succesfully`,
-            //         type: 'success'
-            //     })
-            // })
+           
         }
     },
 

@@ -1,17 +1,23 @@
 import {utilService} from '../../../general/services/util.service.js'
-import {eventBus, EVENT_REMOVE_EMAIL} from '../../../general/services/event-bus.service.js'
+import {eventBus, EVENT_REMOVE_EMAIL , EVENT_SHOW_MSG} from '../../../general/services/event-bus.service.js'
 
 
 export default {
     template: `
         <section class="email-extended-container">
-        <button @click="removeEmail">X</button>
-        <router-link :to="'/email/details/'+email.id">
-            <button>Details</button>
-        </router-link>
+        <div class="email-extended-header flex space-between">
+            <h2 class="extended-subject">{{email.subject}}</h2>
+            <div class="email-extend-buttons">
+                <button @click="removeEmail">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+                <router-link :to="'/email/details/'+email.id">
+                    <button><i class="fas fa-arrows-alt"></i></button>
+                </router-link>
+            </div>
+        </div>
         
-        <h2>{{email.subject}}</h2>
-        <h3>{{email.sender.name}} <span><{{email.sender.emailAdrress}}></span></h3>
+        <h3 class="extended-subject">{{email.sender.name}} <span><{{email.sender.emailAdrress}}></span></h3>
         <p>{{emailBodyTxt}}</p>
         </section>
     `,
@@ -30,6 +36,7 @@ export default {
         removeEmail(ev) {
             ev.stopPropagation();
             eventBus.$emit(EVENT_REMOVE_EMAIL, this.email.id)
+            eventBus.$emit(EVENT_SHOW_MSG, { txt: 'Email deleted', type: 'success' })
         }
      
     },

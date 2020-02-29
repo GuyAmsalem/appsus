@@ -15,5 +15,6 @@ textarea, select, input, button { outline: none; }
 
 .compose-input{
     border: none;
+    background-color: #EAE7DC;
 }
 

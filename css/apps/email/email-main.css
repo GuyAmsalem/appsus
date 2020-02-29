@@ -1,8 +1,19 @@
 @import "./cmps/email-preview.css";
 @import "./cmps/email-compose.css";
 @import "./cmps/email-list.css";
+@import "./cmps/email-filter.css";
+@import "./cmps/email-extended.css";
+@import "./cmps/email-details.css";
 
 .email-app-container {
     display: grid;
-    grid-template-columns: 1fr 5fr
+    grid-template-columns: 1fr 5fr;
+    margin: 0 15px;
+}
+
+.compose-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 1rem;
+    margin-top: 10px;
 }

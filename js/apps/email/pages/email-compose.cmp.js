@@ -1,4 +1,5 @@
 import { emailService } from '../services/email.service.js'
+import { eventBus, EVENT_SHOW_MSG } from '../../../general/services/event-bus.service.js'
 
 
 export default {
@@ -24,10 +25,10 @@ export default {
         <input class="compose-input" required type="textarea" v-model.trim="email.body"/>
     </div>
         
-        <button type="submit">Send</button>
-        <router-link to="/email/list/inbox">
-            <button>Delete/Back</button>
-        </router-link>
+    <router-link to="/email/list/inbox">
+        <button><i class="fas fa-arrow-left"></i></button>
+    </router-link>
+    <button type="submit">Send</button>
     </form>
 
 </section>
@@ -41,8 +42,7 @@ export default {
         sendEmail(){
             emailService.sendEmail(this.email)
                 .then((email) => {
-                    console.log(email);
-                    
+                    eventBus.$emit(EVENT_SHOW_MSG, { txt: 'Email sent', type: 'success' })                    
                     this.$router.push('/email')
                 })
         }
