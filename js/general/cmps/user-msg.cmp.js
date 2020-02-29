@@ -1,9 +1,11 @@
 import { eventBus } from '../services/event-bus.service.js'
 export default {
     template: `
-        <section v-if="isShown"  class="msg-container">
-                <div class="msg-main">{{msg.txt}}</div>
-        </section>
+        <transition name="fade">
+            <section v-if="isShown"  class="msg-container" :class="msg.type">
+                    <div class="msg-main">{{msg.txt}}</div>
+            </section>
+        </transition>
     `,
     data() {
         return {
@@ -12,7 +14,7 @@ export default {
         }
     },
     created() {
-        eventBus.$on('msg', (msg) => {
+        eventBus.$on('showMsg', (msg) => {
             this.msg = msg
             this.isShown = true
             setTimeout(() => {

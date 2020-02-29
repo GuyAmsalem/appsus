@@ -1,6 +1,6 @@
 @import "./base.css";
 @import "./apps/email/cmps/email-preview.css";
 @import "./main-nav-bar.css";
-
+@import "./user-msg.css";
 @import "./apps/keep/keep-main.css";
 @import "./apps/email/email-main.css"

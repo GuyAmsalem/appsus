@@ -1,0 +1,28 @@
+
+.msg-container {
+    background-color: lightgray;
+    padding: 5px 10px;
+    position: fixed;
+    left: 50%;
+    top: 20%;
+    width: 20%;
+    font-size: 2rem;
+    border: 1px solid black;
+    border-radius: 1rem;
+    transform: translate(-50%, -20%);
+    text-align: center;
+ }
+ .msg-container.success {
+   background-color: #5cdb95;
+ }
+ .msg-container.danger {
+   background-color: red;
+ }
+   
+   .fade-enter-active,
+   .fade-leave-active {
+     transition: opacity 0.5s;
+   }
+   .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+     opacity: 0;
+   }

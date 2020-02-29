@@ -18,13 +18,15 @@ export default {
             @pin="togglePinNote"
             >
             </component>
-            <div v-if="editColor" class="note-color-picker flex space-around">
-                 <i @click="changeColor('#d8c3a5')" class="fas fa-brush"></i>
-                 <i @click="changeColor('#8e8d8a')" class="fas fa-brush"></i>
-                 <i @click="changeColor('#e98074')" class="fas fa-brush"></i>
-                 <i @click="changeColor('#e85a4f')" class="fas fa-brush"></i>
-                 <i @click="changeColor('#fa291a')" class="fas fa-brush"></i>   
-            </div>  
+            <transition name="fade">
+                <div v-if="editColor" class="note-color-picker flex space-around" @mouseleave="toggleEditColor">
+                    <i @click="changeColor('#d8c3a5')" class="fas fa-brush"></i>
+                    <i @click="changeColor('#8e8d8a')" class="fas fa-brush"></i>
+                    <i @click="changeColor('#e98074')" class="fas fa-brush"></i>
+                    <i @click="changeColor('#e85a4f')" class="fas fa-brush"></i>
+                    <i @click="changeColor('#fa291a')" class="fas fa-brush"></i>   
+                </div>
+            </transition>  
             <note-edit  v-if="editMode" :note="note" @edit="toggleEditMode"></note-edit>
         </div>
     `,

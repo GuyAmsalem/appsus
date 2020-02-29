@@ -1,4 +1,5 @@
 import { keepService } from '../services/keep.service.js';
+import {eventBus, EVENT_SHOW_MSG} from '../../../general/services/event-bus.service.js'
 import textInput from './text-input.cmp.js'
 import imgInput from './img-input.cmp.js'
 import videoInput from './video-input.cmp.js'
@@ -54,7 +55,8 @@ export default {
           keepService.saveNote(this.note)
           .then(note => {
           console.log(note, 'is saved')
-          this.note = keepService.getEmptyNote()
+          eventBus.$emit(EVENT_SHOW_MSG, { txt: this.note.id + ' Saved', type: 'success' })
+          this.note = keepService.getEmptyNote()    
           })
       }
     },

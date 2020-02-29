@@ -21,13 +21,13 @@ export default {
   computed: {
     notesForDisplay(){
       if (!this.filterBy) return this.userNotes;
-      
+      var lowerFilterTxt = this.filterBy.txt.toLowerCase()
       var filteredNotes = this.userNotes.filter(note => {
-        if (note.type === 'noteText') return note.info.txt.includes(this.filterBy.txt)
-        if (note.type === 'noteImg' || note.type === 'noteVideo') return note.info.url.includes(this.filterBy.txt)
+        if (note.type === 'noteText') return note.info.txt.toLowerCase().includes(lowerFilterTxt)
+        if (note.type === 'noteImg' || note.type === 'noteVideo') return note.info.url.toLowerCase().includes(lowerFilterTxt)
         if (note.type === 'noteTodos'){
             return note.info.todos.some(todo => {
-                  return todo.txt.includes(this.filterBy.txt)
+                  return todo.txt.toLowerCase().includes(lowerFilterTxt)
           })
         }  
       })
