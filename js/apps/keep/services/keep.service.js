@@ -30,7 +30,7 @@ var inputs = [
     {
         type:'todosInput',
         info: {
-            placeholder: 'Enter your tasks(seperate them with comma ",")',
+            placeholder: 'Enter your tasks(use ",")',
             todos: ''
         }
     },

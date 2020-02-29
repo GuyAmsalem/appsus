@@ -7,6 +7,7 @@ export default {
                 v-model="url" 
                 :placeholder="info.placeholder"
                 @input="$emit('changed', url)"
+                class="note-input"
                 >
         </template>
     </div>    

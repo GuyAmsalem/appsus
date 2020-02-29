@@ -6,6 +6,7 @@ export default {
                 v-model="todos" 
                 :placeholder="info.placeholder"
                 @input="$emit('changed', todos)"
+                class="note-input"
                 >
         </template>
     </div>    

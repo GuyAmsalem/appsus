@@ -1,0 +1,19 @@
+.note-add-container {
+    margin: 0 auto;
+    width: 40%;
+}
+
+.note-input {
+  font-size: 1.7rem;
+  border-radius: 1rem;
+  padding: 4px;
+}
+
+.note-selection {
+    width: 40%;
+}
+
+.note-selection i {
+  font-size: 1.7rem;
+  cursor: pointer;
+}

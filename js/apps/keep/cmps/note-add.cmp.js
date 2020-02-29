@@ -9,7 +9,7 @@ import todosInput from './todos-input.cmp.js'
 
 export default {
     template: `
-    <section class="note-add-container flex">
+    <section class="note-add-container flex center">
         <form @submit.prevent="saveNote" v-for="(input, idx) in inputs">
                     <component 
                     :is="input.type" 
@@ -18,13 +18,12 @@ export default {
                     v-if="input.type === type"
                     ></component>
         </form>
-        <div class="note-selection">
+        <div class="note-selection flex space-around align-center">
             <i @click="changeType('textInput')" class="fas fa-font"></i>
             <i @click="changeType('imgInput')" class="far fa-image"></i>
             <i @click="changeType('videoInput')" class="fas fa-video"></i>
             <i @click="changeType('todosInput')" class="fas fa-list"></i>
         </div>
-        {{this.note}}
     </section>
     `,
     props: [''],
@@ -50,11 +49,8 @@ export default {
           if (this.note.type === 'noteTodos') this.note.info.todos = val
       },
       saveNote(){
-          console.log('saving')
-          //maybe deep copy
           keepService.saveNote(this.note)
           .then(note => {
-          console.log(note, 'is saved')
           eventBus.$emit(EVENT_SHOW_MSG, { txt: this.note.id + ' Saved', type: 'success' })
           this.note = keepService.getEmptyNote()    
           })
