@@ -1,4 +1,5 @@
 @import "./cmps/email-preview.css";
+@import "./cmps/email-compose.css";
 
 .email-app-container {
     display: grid;

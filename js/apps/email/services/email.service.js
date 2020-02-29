@@ -11,16 +11,13 @@ export const emailService = {
 }
 
 const EMAIL_KEY = 'emailDB'
-var emails = _createEmails()
+var emails = storageService.load(EMAIL_KEY) || _createEmails()
 
 function _createEmails() {
-    var emails = storageService.load(EMAIL_KEY)
-    if (!emails || !emails.length){
-        emails = [_createEmail({name:'ran',emailAdrress: 'ran@gmail.com'}),
+        var samplesEmails = [_createEmail({name:'ran',emailAdrress: 'ran@gmail.com'}),
         _createEmail({name:'guy',emailAdrress: 'guy@gmail.com'})]
-        storageService.store(EMAIL_KEY, emails)
-    }
-    return emails
+        storageService.store(EMAIL_KEY, samplesEmails)
+    return samplesEmails
 }
 
 function _createEmail(sender){

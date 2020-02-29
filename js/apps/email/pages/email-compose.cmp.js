@@ -4,24 +4,24 @@ import { emailService } from '../services/email.service.js'
 export default {
     template: `
     <section class="email-compose">
-    <h2>New Message</h2>
-    <form @submit.prevent="sendEmail">
-    <div class="form-row">
+    <h2 class="email-compose-title">New Message</h2>
+    <form class="compose-form" @submit.prevent="sendEmail">
+    <div class="compose-form-row">
         <label>
             To:        
-            <input required type="text" v-model.trim="email.recipient"/>
+            <input class="compose-input" required type="text" v-model.trim="email.recipient"/>
         </label>    
     </div>
 
-    <div class="form-row">
+    <div class="compose-form-row">
         <label>
             Subject:        
-            <input required type="text" v-model.trim="email.subject"/>
+            <input class="compose-input" required type="text" v-model.trim="email.subject"/>
         </label>
     </div>
 
-    <div class="form-row">
-        <input required type="textarea" v-model.trim="email.body"/>
+    <div class="compose-form-row">
+        <input class="compose-input" required type="textarea" v-model.trim="email.body"/>
     </div>
         
         <button type="submit">Send</button>
@@ -40,7 +40,9 @@ export default {
     methods: {
         sendEmail(){
             emailService.sendEmail(this.email)
-                .then(() => {
+                .then((email) => {
+                    console.log(email);
+                    
                     this.$router.push('/email')
                 })
         }
