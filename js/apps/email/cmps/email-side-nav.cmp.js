@@ -4,7 +4,7 @@ export default {
     template: `
     <section class="email-side-nav">
         <router-link to="/email/list/inbox">
-            <p>Inbox</p>
+            <p>Inbox <span>{{unread}}</span></p>
         </router-link>
         
         <router-link to="/email/list/star">
@@ -20,4 +20,5 @@ export default {
         </router-link>
     </section>
     `,
+    props: ['unread']
 }

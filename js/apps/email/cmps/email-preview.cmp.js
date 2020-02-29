@@ -2,7 +2,7 @@ import {utilService} from '../../../general/services/util.service.js'
 
 export default {
     template: `
-        <article v-if="email" class="email-pre-card">
+        <article v-if="email" class="email-pre-card" :class="emailRead">
             <p>{{email.sender.name}}</p>
             <p>{{txtToShow}}</p>
             <p>{{timeToShow}}</p>
@@ -29,6 +29,9 @@ export default {
         },
         timeToShow() {
             return moment(this.email.sendAt).format('LT');
+        },
+        emailRead(){
+            return (this.email.isRead)? 'read-email' : 'unread-email'
         }
     }
 }

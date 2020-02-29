@@ -7,11 +7,12 @@ export const emailService = {
     addEmail,
     removeEmail,
     getEmptyEmail,
-    sendEmail
+    sendEmail,
+    updateEmailRead
 }
 
 const EMAIL_KEY = 'emailDB'
-var emails = storageService.load(EMAIL_KEY) || _createEmails()
+var emailDB = storageService.load(EMAIL_KEY) || _createEmails()
 
 function _createEmails() {
         var samplesEmails = [_createEmail({name:'ran',emailAdrress: 'ran@gmail.com'}),
@@ -63,40 +64,50 @@ function getEmptyEmail() {
     }
 }
 
+function updateEmailRead(emailId){
+    const emailIdx = emailDB.findIndex(email => email.id === emailId)
+    const emailCopy = JSON.parse(JSON.stringify(emailDB[emailIdx]))
+    emailCopy.isRead = true
+    emailDB.splice(emailIdx, 1 , emailCopy)
+    storageService.store(EMAIL_KEY, emailDB)
+}
+
 function sendEmail(email){
-    if (email.recipient === 'guy@gmail.com'){
+    if (email.recipient === 'guy@gmail.com' ||
+    email.recipient === 'me'){
         email.folders.inbox = true
     } else {
         email.folders.sentMail = true
+        email.isRead = true
     }
     email.sentAt = Date.now()
-    emails.push(email)
-    storageService.store(EMAIL_KEY, emails)
+    emailDB.push(email)
+    storageService.store(EMAIL_KEY, emailDB)
     return Promise.resolve(email)
     
 }
 
 function getEmails() {
-    return Promise.resolve(emails)
+    return Promise.resolve(emailDB)
 }
 
 function getById(emailId) {
-    const email = emails.find(email => email.id === emailId)
+    const email = emailDB.find(email => email.id === emailId)
     return Promise.resolve(email)
 }
 
 function addEmail(email) {
     email.id = utilService.makeId()
-    emails.push(email);
-    storageService.store(EMAIL_KEY, emails)
+    emailDB.push(email);
+    storageService.store(EMAIL_KEY, emailDB)
     return Promise.resolve(email)
 } 
 
 function removeEmail(emailId) {
-    const idx = emails.findIndex(email => email.id === emailId)
+    const idx = emailDB.findIndex(email => email.id === emailId)
     if(idx === -1) return Promise.reject('DID NOT REMOVE EMAIL')
-    const deletedMails = emails.splice(idx, 1);
-    storageService.store(EMAIL_KEY, emails)
+    const deletedMails = emailDB.splice(idx, 1);
+    storageService.store(EMAIL_KEY, emailDB)
     return Promise.resolve(deletedMails[0])
 }
 

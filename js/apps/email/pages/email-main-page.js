@@ -6,7 +6,7 @@ export default {
     template: `
     <section class="email-main-page">
         <email-filter @set-filter="setFilter" ></email-filter>
-        <email-list :emails="emailsForDisplay"></email-list>
+        <email-list @read="updateEmail" :emails="emailsForDisplay"></email-list>
     </section>
     `,
     data() {
@@ -50,6 +50,9 @@ export default {
         setFilter(filterBy) {
             this.filterBy = filterBy
         },
+        updateEmail(emailId){
+            emailService.updateEmailRead(emailId)
+        }
     },
     components: {
         emailList,

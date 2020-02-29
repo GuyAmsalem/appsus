@@ -4,7 +4,7 @@ import emailExtended from './email-extended.cmp.js'
 export default {
     template: `
     <section v-if="emails" class="emails-container">
-    <div v-for="currEmail in emails" @click="extendEmail(currEmail.id)">
+    <div v-for="(currEmail, index) in emails" @click="extendEmail(currEmail.id)">
         <email-preview :email="currEmail"></email-preview>
         <email-extended
         v-if="selectedEmailId === currEmail.id"
@@ -17,7 +17,8 @@ export default {
         props: ['emails'],  
         data(){
             return {
-                selectedEmailId: null
+                selectedEmailId: null,
+                isRead: null
             }
         },
         methods: {
@@ -26,6 +27,7 @@ export default {
                     this.selectedEmailId = null
                 } else {
                     this.selectedEmailId = emailId
+                    this.$emit('read', emailId)
                 }
             },
             closeExtendedEmail(){
