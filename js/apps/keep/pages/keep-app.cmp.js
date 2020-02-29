@@ -1,25 +1,37 @@
 import { keepService } from '../services/keep.service.js';
 import noteAdd from '../cmps/note-add.cmp.js'
 import noteList from '../cmps/note-list.cmp.js'
-
+import noteFilter from '../cmps/note-filter.cmp.js'
 
 export default {
   template: `
-    <section>
+    <section v-if="userNotes">
       <h1>Keep app</h1>
       <note-add></note-add>
+      <note-filter @set-filter="setFilter"></note-filter>
       <note-list :userNotes="notesForDisplay" @remove="removeNote"></note-list>
     </section>
   `,
   data() {
     return {
-        userNotes: [],
+        userNotes: null,
         filterBy: null,
     }
   },
   computed: {
     notesForDisplay(){
       if (!this.filterBy) return this.userNotes;
+      
+      var filteredNotes = this.userNotes.filter(note => {
+        if (note.type === 'noteText') return note.info.txt.includes(this.filterBy.txt)
+        if (note.type === 'noteImg' || note.type === 'noteVideo') return note.info.url.includes(this.filterBy.txt)
+        if (note.type === 'noteTodos'){
+            return note.info.todos.some(todo => {
+                  return todo.txt.includes(this.filterBy.txt)
+          })
+        }  
+      })
+      return filteredNotes
     }
   },
   created(){
@@ -34,10 +46,14 @@ export default {
         .then(deletedNoteId =>{
           console.log(deletedNoteId, 'is gone')
         })
-    }
+    },
+    setFilter(filterBy) {
+      this.filterBy = filterBy
+  },
   },
   components:{
     noteList,
-    noteAdd
+    noteAdd,
+    noteFilter
   },
 }

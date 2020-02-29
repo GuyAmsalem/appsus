@@ -15,6 +15,7 @@ export default {
             @remove="$emit('remove')"
             @edit="toggleEditMode"
             @color="toggleEditColor"
+            @pin="togglePinNote"
             >
             </component>
             <div v-if="editColor" class="note-color-picker flex space-around">
@@ -57,11 +58,15 @@ export default {
               console.log(note.id, 'colorChange saved')
           })
         },
-        // setColors(){
-        //     this.style.backgroundColor = this.note.style.backgroundColor
-        // },
         toggleEditColor(){
             this.editColor = !this.editColor
+        },
+        togglePinNote(){
+            this.note.isPinned = !this.note.isPinned
+            keepService.saveNote(this.note)
+            .then(note =>{
+                console.log(note.id, 'pinned state saved')
+            })
         }
     },
     // created(){

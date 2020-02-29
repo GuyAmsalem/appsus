@@ -45,3 +45,8 @@
 .flex.flex-start {
     justify-content: flex-start;
 }
+
+.long-text-formatted{
+    word-wrap: break-word;
+    line-height: 1.5em;
+}

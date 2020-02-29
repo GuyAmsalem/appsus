@@ -43,10 +43,10 @@ export default {
         if (this.type === 'todosInput') this.note =  keepService.getEmptyNote('noteTodos')
       },  
       setValue(val){
-          if(this.note.type === 'noteText') this.note.info.txt = val
-          if(this.note.type === 'noteImg') this.note.info.url = val
-          if(this.note.type === 'noteVideo') this.note.info.url = val
-          if(this.note.type === 'noteTodos') this.note.info.todos = val
+          if (this.note.type === 'noteText') this.note.info.txt = val
+          if (this.note.type === 'noteImg') this.note.info.url = val
+          if (this.note.type === 'noteVideo') this.note.info.url = val
+          if (this.note.type === 'noteTodos') this.note.info.todos = val
       },
       saveNote(){
           console.log('saving')
@@ -54,7 +54,7 @@ export default {
           keepService.saveNote(this.note)
           .then(note => {
           console.log(note, 'is saved')
-          this.note = keepService.getEmptyNote()    
+          this.note = keepService.getEmptyNote()
           })
       }
     },
