@@ -41,4 +41,3 @@ export default {
 
 
 
-// 'https://www.youtube.com/embed/' + this.info.src.substring()

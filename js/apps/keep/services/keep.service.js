@@ -3,7 +3,9 @@ import { storageService } from '../../../general/services/storage.service.js'
 const USER_NOTES_KEY = 'userNotes'
 
 
-var userNotes = _createNotes()
+var userNotes = storageService.load(USER_NOTES_KEY) || _createDemoNotes()
+
+
 
 var inputs = [
     {
@@ -89,7 +91,6 @@ function saveNote(note) {
 
 function _addNote(note) {
     note.id = utilService.makeId()
-    // if(note.type === 'noteTodos') note = formatNoteTodos(note)
     userNotes.unshift(note);
     storageService.store(USER_NOTES_KEY, userNotes)
     return Promise.resolve(note)
@@ -105,13 +106,204 @@ function _editNote(note) {
 
 
 
-function _createNotes() {
-    var userNotes = storageService.load(USER_NOTES_KEY)
-    if (!userNotes || !userNotes.length) {
-        userNotes = [_createNote('Free i feel free like you promise i be'), _createNote('Total Football')]
-        storageService.store(USER_NOTES_KEY, userNotes)
-    }
-    return userNotes;
+function _createDemoNotes() {
+    var demoNotes = [
+        {
+            id: 'd4a5x',
+            type: 'noteText',
+            isPinned: true,
+            info: {
+                txt: 'Free I feel free like you promised I\d be'
+            },
+            style: {
+                backgroundColor: '#90ccf4'
+            }
+        },
+        {
+            id: 'ZzZzZ',
+            type: 'noteVideo',
+            isPinned: true,
+            info: {
+                url: 'https://www.youtube.com/embed/aYDfwUJzYQg'
+            },
+            style: {
+                backgroundColor: '#4caf50'
+            }
+        },
+        {
+            id: 'XxXxX',
+            type: 'noteImg',
+            isPinned: true,
+            info: {
+                url: 'https://media.giphy.com/media/PDmXIQru17Udy/giphy.gif'
+            },
+            style: {
+                backgroundColor: '#f3d250'
+            }
+        },
+        {
+            id: 'AaAaA',
+            type: 'noteTodos',
+            isPinned: true,
+            info: {
+                todos: [
+                    { txt: 'Eat', isDone: false },
+                    { txt: 'Pray', isDone: false },
+                    { txt: 'Love', isDone: true },
+                ]
+            },
+            style: {
+                backgroundColor: '#f78888'
+            }
+        },
+        {
+            id: 'Babab',
+            type: 'noteText',
+            isPinned: true,
+            info: {
+                txt: 'Rak TB!'
+            },
+            style: {
+                backgroundColor: '#4caf50'
+            }
+        },
+        {
+            id: 'C3PO1',
+            type: 'noteImg',
+            isPinned: true,
+            info: {
+                url: 'https://www.myabandonware.com/media/screenshots/j/jazz-jackrabbit-2-4dm/jazz-jackrabbit-2_3.jpg'
+            },
+            style: {
+                backgroundColor: '#ffa350'
+            }
+        },
+        {
+            id: 'R2D21',
+            type: 'noteImg',
+            isPinned: false,
+            info: {
+                url: 'https://media.giphy.com/media/l11IVhXPESQqu0z3GQ/giphy.gif'
+            },
+            style: {
+                backgroundColor: '#f78888'
+            }
+        },
+        {
+            id: '12d2r',
+            type: 'noteImg',
+            isPinned: false,
+            info: {
+                url: 'https://media.giphy.com/media/mi6DsSSNKDbUY/giphy.gif'
+            },
+            style: {
+                backgroundColor: '#ffa350'
+            }
+        },
+        {
+            id: 'SPura',
+            type: 'noteTodos',
+            isPinned: false,
+            info: {
+                todos: [
+                    { txt: 'Elections1', isDone: true },
+                    { txt: 'Elections2', isDone: true },
+                    { txt: 'Elections3', isDone: true },
+                ]
+            },
+            style: {
+                backgroundColor: '#ffa350'
+            }
+        },
+        {
+            id: 'SPurs',
+            type: 'noteImg',
+            isPinned: false,
+            info: {
+                url: 'https://media.giphy.com/media/3GnCVaJAGhfJ6/giphy.gif'
+            },
+            style: {
+                backgroundColor: '#4caf50'
+            }
+        },
+        {
+            id: 'pPZpZp',
+            type: 'noteVideo',
+            isPinned: false,
+            info: {
+                url: 'https://www.youtube.com/embed/9yVsFL6oMGE'
+            },
+            style: {
+                backgroundColor: '#4caf50'
+            }
+        },
+        {
+            id: 'srups',
+            type: 'noteImg',
+            isPinned: false,
+            info: {
+                url: 'https://assets.bigcartel.com/product_images/217429087/Primus_Norfolk_Regular.jpg?auto=format&fit=max&h=1000&w=1000'
+            },
+            style: {
+                backgroundColor: '#f3d250'
+            }
+        },
+        {
+            id: 'BeAtl',
+            type: 'noteText',
+            isPinned: false,
+            info: {
+                txt: `It was twenty years ago today
+                Sergeant Pepper taught the band to play,
+                They\'ve been going in and out of style,
+                But they\'re guaranteed to raise the smile,
+                So may I introduce to you,
+                The act you\'ve known for all these years,
+                Sergeant Pepper\'s Lonely Hearts Club Band.`
+            },
+            style: {
+                backgroundColor: '#90ccf4'
+            }
+        },
+        {
+            id: 'parcR',
+            type: 'noteImg',
+            isPinned: true,
+            info: {
+                url: 'https://www.disccenter.co.il/content/products/prodimage_46385.jpg'
+            },
+            style: {
+                backgroundColor: '#f78888'
+            }
+        },
+        {
+            id: 'igPOP',
+            type: 'noteImg',
+            isPinned: true,
+            info: {
+                url: 'https://i.pinimg.com/originals/fc/45/67/fc456734ac8265e654aaa4360750c488.jpg'
+            },
+            style: {
+                backgroundColor: '#f3d250'
+            }
+        },
+        {
+            id: 'ww2DD',
+            type: 'noteImg',
+            isPinned: true,
+            info: {
+                url: 'https://wallpaperaccess.com/full/560725.jpg'
+            },
+            style: {
+                backgroundColor: '#ffa350'
+            }
+        },
+    ]
+
+    
+
+    storageService.store(USER_NOTES_KEY, demoNotes)
+    return demoNotes;
 }
 
 function _createNote(txt) {
@@ -135,39 +327,3 @@ export const keepService = {
     saveNote,
     removeNote
 }
-
-
-//fake data
-// var notes = [
-//     {
-//         id: null,
-//         type,
-//         isPinned: true,
-//         info: {},
-//         style: {
-//             backgroundColor: '#e98074'
-//         },
-//     }
-// ]
-
-
-// var notes = [
-//     {
-//       type: "NoteText",
-//       isPinned: true,
-//       info: {
-//         txt: "Fullstack Me Baby!"
-//       }
-//     },
-//     {
-//       type: "NoteImg",
-//       info: {
-//         url: "http://some-img/me",
-//         title: "Me playing Mi"
-//       },
-//       style: {
-//         backgroundColor: "#00d"
-//       }
-//     },
-
-// ];

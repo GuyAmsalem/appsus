@@ -59,7 +59,7 @@ export default {
             keepService.saveNote(this.note)
                 .then(note => {
                     eventBus.$emit(EVENT_SHOW_MSG, { txt: 'Note Saved', type: 'success' })
-                    this.note = keepService.getEmptyNote()
+                    this.note = keepService.getEmptyNote(this.note.type)
                 })
         },
         inputActive(type) {

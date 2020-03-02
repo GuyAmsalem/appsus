@@ -1,0 +1,13 @@
+.hero-img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 100%;
+        object-fit: contain;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("../img/home2.jpg");
+        height: 100vh;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+}
