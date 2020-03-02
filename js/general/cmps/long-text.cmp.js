@@ -3,7 +3,7 @@ export default {
     template: `
             <p class="long-text-formatted">
                 {{shortTxt}} 
-                <span @click="toggleReadMore">{{readingLength}}</span>
+                <span class="long-text-btn" @click="toggleReadMore">{{readingLength}}</span>
             </p>
 `,
     data() {

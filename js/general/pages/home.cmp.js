@@ -1,6 +1,7 @@
 
 export default {
     template: `
-        <h1>Hello</h1>
+    <div class="hero-img">
+    </div>
     `,
 }

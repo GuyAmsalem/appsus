@@ -3,7 +3,7 @@ export default {
     template: `
     <section class="note-filter">
         <input type="text" 
-            placeholder="Search Notes🔍" 
+            placeholder="🔍Search Notes" 
             v-model="filterBy.txt"
             class="search-note-input" 
         />

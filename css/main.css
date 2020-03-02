@@ -1,7 +1,9 @@
 @import "./fonts.css";
 @import "./base.css";
 @import "./main-nav-bar.css";
+@import "./home-page.css";
 @import "./main-footer.css";
 @import "./user-msg.css";
+@import "./long-text.css";
 @import "./apps/keep/keep-main.css";
 @import "./apps/email/email-main.css"

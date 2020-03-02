@@ -33,6 +33,10 @@
     color: rgb(85, 84, 84);
 }
 
+.note-features .fas.fa-edit:hover{
+    color: #0288D1;
+}
+
 .note-icons-container i {
   font-size: 1.5rem;
   
