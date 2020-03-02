@@ -13,13 +13,13 @@ export default {
     </div>    
     `,
     props: ['info'],
-    data (){
+    data() {
         return {
-          txt: ''
+            txt: ''
         }
     },
-   
-    
-    
-  
+
+
+
+
 }

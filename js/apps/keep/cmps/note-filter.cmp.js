@@ -11,21 +11,21 @@ export default {
     `,
     data() {
         return {
-            filterBy: {txt: ''}
+            filterBy: { txt: '' }
         }
     },
     watch: {
         filterBy: {
             handler() {
-                 this.emitFilter();
+                this.emitFilter();
             },
             deep: true
-        }, 
-     },
-     methods:{
-         emitFilter() {
-             this.$emit('set-filter', this.filterBy)
-         }
-     }
+        },
+    },
+    methods: {
+        emitFilter() {
+            this.$emit('set-filter', this.filterBy)
+        }
+    }
 
 }

@@ -13,12 +13,12 @@ export default {
     </div>    
     `,
     props: ['info'],
-    data (){
+    data() {
         return {
-          url: ''
+            url: ''
         }
     },
-    
-    
-  
+
+
+
 }

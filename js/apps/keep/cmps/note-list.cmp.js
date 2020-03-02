@@ -23,10 +23,10 @@ export default {
         notePreview
     },
     computed: {
-        pinnedNotes(){
+        pinnedNotes() {
             return this.userNotes.filter(note => note.isPinned)
         },
-        unpinnedNotes(){
+        unpinnedNotes() {
             return this.userNotes.filter(note => !note.isPinned)
         }
     }
@@ -34,4 +34,4 @@ export default {
 }
 
 
-{/* <button @click="$emit('remove', currCar.id)">x</button> */}
+{/* <button @click="$emit('remove', currCar.id)">x</button> */ }

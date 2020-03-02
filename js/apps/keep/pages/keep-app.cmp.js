@@ -14,44 +14,44 @@ export default {
   `,
   data() {
     return {
-        userNotes: null,
-        filterBy: null,
+      userNotes: null,
+      filterBy: null,
     }
   },
   computed: {
-    notesForDisplay(){
+    notesForDisplay() {
       if (!this.filterBy) return this.userNotes;
       var lowerFilterTxt = this.filterBy.txt.toLowerCase()
       var filteredNotes = this.userNotes.filter(note => {
         if (note.type === 'noteText') return note.info.txt.toLowerCase().includes(lowerFilterTxt)
         if (note.type === 'noteImg' || note.type === 'noteVideo') return note.info.url.toLowerCase().includes(lowerFilterTxt)
-        if (note.type === 'noteTodos'){
-            return note.info.todos.some(todo => {
-                  return todo.txt.toLowerCase().includes(lowerFilterTxt)
+        if (note.type === 'noteTodos') {
+          return note.info.todos.some(todo => {
+            return todo.txt.toLowerCase().includes(lowerFilterTxt)
           })
-        }  
+        }
       })
       return filteredNotes
     }
   },
-  created(){
+  created() {
     keepService.getUserNotes()
-    .then(userNotes =>{
-      this.userNotes = userNotes
-    })  
+      .then(userNotes => {
+        this.userNotes = userNotes
+      })
   },
   methods: {
-    removeNote(noteId){
-        keepService.removeNote(noteId)
-        .then(deletedNoteId =>{
+    removeNote(noteId) {
+      keepService.removeNote(noteId)
+        .then(deletedNoteId => {
           console.log(deletedNoteId, 'is gone')
         })
     },
     setFilter(filterBy) {
       this.filterBy = filterBy
+    },
   },
-  },
-  components:{
+  components: {
     noteList,
     noteAdd,
     noteFilter

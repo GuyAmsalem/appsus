@@ -1,5 +1,5 @@
 import { keepService } from '../services/keep.service.js';
-import {eventBus, EVENT_SHOW_MSG} from '../../../general/services/event-bus.service.js'
+import { eventBus, EVENT_SHOW_MSG } from '../../../general/services/event-bus.service.js'
 import textInput from './text-input.cmp.js'
 import imgInput from './img-input.cmp.js'
 import videoInput from './video-input.cmp.js'
@@ -27,40 +27,40 @@ export default {
     </section>
     `,
     props: [''],
-    data(){
+    data() {
         return {
-          inputs: null,
-          type: 'textInput',
-          note: keepService.getEmptyNote()
+            inputs: null,
+            type: 'textInput',
+            note: keepService.getEmptyNote()
         }
     },
     methods: {
-      changeType(type){
-        this.type = type;
-        if (this.type === 'textInput') this.note =  keepService.getEmptyNote('noteText')
-        if (this.type === 'imgInput') this.note =  keepService.getEmptyNote('noteImg')
-        if (this.type === 'videoInput') this.note =  keepService.getEmptyNote('noteVideo')
-        if (this.type === 'todosInput') this.note =  keepService.getEmptyNote('noteTodos')
-      },  
-      setValue(val){
-          if (this.note.type === 'noteText') this.note.info.txt = val
-          if (this.note.type === 'noteImg') this.note.info.url = val
-          if (this.note.type === 'noteVideo') this.note.info.url = val
-          if (this.note.type === 'noteTodos') this.note.info.todos = val
-      },
-      saveNote(){
-          keepService.saveNote(this.note)
-          .then(note => {
-          eventBus.$emit(EVENT_SHOW_MSG, { txt: 'Note Saved', type: 'success' })
-          this.note = keepService.getEmptyNote()    
-          })
-      }
+        changeType(type) {
+            this.type = type;
+            if (this.type === 'textInput') this.note = keepService.getEmptyNote('noteText')
+            if (this.type === 'imgInput') this.note = keepService.getEmptyNote('noteImg')
+            if (this.type === 'videoInput') this.note = keepService.getEmptyNote('noteVideo')
+            if (this.type === 'todosInput') this.note = keepService.getEmptyNote('noteTodos')
+        },
+        setValue(val) {
+            if (this.note.type === 'noteText') this.note.info.txt = val
+            if (this.note.type === 'noteImg') this.note.info.url = val
+            if (this.note.type === 'noteVideo') this.note.info.url = val
+            if (this.note.type === 'noteTodos') this.note.info.todos = val
+        },
+        saveNote() {
+            keepService.saveNote(this.note)
+                .then(note => {
+                    eventBus.$emit(EVENT_SHOW_MSG, { txt: 'Note Saved', type: 'success' })
+                    this.note = keepService.getEmptyNote()
+                })
+        }
     },
-    created(){
+    created() {
         keepService.getInputs()
-        .then(inputs => {
-            this.inputs = inputs
-        })          
+            .then(inputs => {
+                this.inputs = inputs
+            })
     },
     components: {
         textInput,

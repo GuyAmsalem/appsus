@@ -1,34 +1,34 @@
-import {utilService} from '../../../general/services/util.service.js'
-import {storageService} from '../../../general/services/storage.service.js'
+import { utilService } from '../../../general/services/util.service.js'
+import { storageService } from '../../../general/services/storage.service.js'
 const USER_NOTES_KEY = 'userNotes'
 
 
 var userNotes = _createNotes()
 
 var inputs = [
-    {   
-        type:'textInput',
+    {
+        type: 'textInput',
         info: {
             placeholder: 'What\'s on your Mind?',
             txt: ''
         }
     },
     {
-        type:'imgInput',
+        type: 'imgInput',
         info: {
             placeholder: 'Enter an Image URL',
             url: ''
         }
     },
     {
-        type:'videoInput',
+        type: 'videoInput',
         info: {
             placeholder: 'Enter a Video URL',
             url: ''
         }
     },
     {
-        type:'todosInput',
+        type: 'todosInput',
         info: {
             placeholder: 'Enter your tasks(use ",")',
             todos: ''
@@ -37,57 +37,57 @@ var inputs = [
 ]
 
 function formatNoteTodos(noteTodos) {
-  let todos = noteTodos.info.todos.split(', ')
-  noteTodos.info.todos = todos.map(todo => {
-      return {txt: todo, isDone: false}
-  });
-  return noteTodos
+    let todos = noteTodos.info.todos.split(', ')
+    noteTodos.info.todos = todos.map(todo => {
+        return { txt: todo, isDone: false }
+    });
+    return noteTodos
 }
 
 
 
 
 
-function getUserNotes(){
+function getUserNotes() {
     return Promise.resolve(userNotes)
 }
 
-function getInputs(){
+function getInputs() {
     return Promise.resolve(inputs)
 }
 
-function getEmptyNote(type = 'noteText'){
-    var emptyNote =  {
+function getEmptyNote(type = 'noteText') {
+    var emptyNote = {
         id: null,
         type,
         isPinned: false,
         info: {},
         style: {
-            backgroundColor: '#ffffff'
+            backgroundColor: '#e98074'
         }
     }
-    if(type === 'noteText') emptyNote.info.txt = ''
-    if(type === 'noteImg') emptyNote.info.url = ''
-    if(type === 'noteVideo') emptyNote.info.url = ''
-    if(type === 'noteTodos') emptyNote.info.todos = ''
+    if (type === 'noteText') emptyNote.info.txt = ''
+    if (type === 'noteImg') emptyNote.info.url = ''
+    if (type === 'noteVideo') emptyNote.info.url = ''
+    if (type === 'noteTodos') emptyNote.info.todos = ''
     return emptyNote;
 }
 
-function removeNote(noteId){
+function removeNote(noteId) {
     const idx = userNotes.findIndex(note => note.id === noteId)
-    if(idx === -1) return Promise.reject('DID NOT REMOVE NOTE')
+    if (idx === -1) return Promise.reject('DID NOT REMOVE NOTE')
     var deletedNote = userNotes.splice(idx, 1);
     storageService.store(USER_NOTES_KEY, userNotes)
     return Promise.resolve(deletedNote[0].id)
 }
 
-function saveNote(note){
-    if(note.type === 'noteTodos' && (!Array.isArray(note.info.todos))) note = formatNoteTodos(note)
-    if(note.id) return _editNote(note)
+function saveNote(note) {
+    if (note.type === 'noteTodos' && (!Array.isArray(note.info.todos))) note = formatNoteTodos(note)
+    if (note.id) return _editNote(note)
     else return _addNote(note)
-  }
+}
 
-function _addNote(note){
+function _addNote(note) {
     note.id = utilService.makeId()
     // if(note.type === 'noteTodos') note = formatNoteTodos(note)
     userNotes.unshift(note);
@@ -101,7 +101,7 @@ function _editNote(note) {
     userNotes.splice(idx, 1, note)
     storageService.store(USER_NOTES_KEY, userNotes)
     return Promise.resolve(note)
-} 
+}
 
 
 
@@ -115,14 +115,14 @@ function _createNotes() {
 }
 
 function _createNote(txt) {
-    return  {
+    return {
         id: utilService.makeId(),
         type: 'noteText',
         isPinned: false,
         info: {
             txt,
         },
-        style:{
+        style: {
             backgroundColor: '#e98074'
         }
     }
@@ -137,16 +137,18 @@ export const keepService = {
 }
 
 
-// {
-//     type: "NoteTodos",
-//     info: {
-//       label: "How was it:",
-//       todos: [
-//         { txt: "Do that", doneAt: null },
-//         { txt: "Do this", doneAt: 187111111 }
-//       ]
+//fake data
+// var notes = [
+//     {
+//         id: null,
+//         type,
+//         isPinned: true,
+//         info: {},
+//         style: {
+//             backgroundColor: '#e98074'
+//         },
 //     }
-//   }
+// ]
 
 
 // var notes = [
@@ -167,5 +169,5 @@ export const keepService = {
 //         backgroundColor: "#00d"
 //       }
 //     },
-   
+
 // ];

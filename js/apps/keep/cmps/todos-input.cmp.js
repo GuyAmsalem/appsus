@@ -12,12 +12,12 @@ export default {
     </div>    
     `,
     props: ['info'],
-    data (){
+    data() {
         return {
-          todos: ''
+            todos: ''
         }
     },
-    
-    
-  
+
+
+
 }

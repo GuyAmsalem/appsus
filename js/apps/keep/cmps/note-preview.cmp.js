@@ -14,12 +14,14 @@ export default {
             :note="note"
             @remove="$emit('remove')"
             @edit="toggleEditMode"
-            @color="toggleEditColor"
+            @color="activateEditColor"
+            @uncolor="inactivateEditColor"
             @pin="togglePinNote"
             >
             </component>
             <transition name="fade">
-                <div v-if="editColor" class="note-color-picker flex space-around" @mouseleave="toggleEditColor">
+                <div v-bind:class="{ 'note-color-picker flex space-around': !editColor, 'note-color-picker flex space-around shown': editColor }" 
+                @mouseleave="inactivateEditColor" @mouseover="activateEditColor">
                     <i @click="changeColor('#d8c3a5')" class="fas fa-brush"></i>
                     <i @click="changeColor('#8e8d8a')" class="fas fa-brush"></i>
                     <i @click="changeColor('#e98074')" class="fas fa-brush"></i>
@@ -38,42 +40,39 @@ export default {
         noteTodos,
         noteEdit
     },
-    data(){
+    data() {
         return {
-          editMode: false,
-          editColor:false,
-        //   style:{
-        //       backgroundColor: ''
-        //   }
+            editMode: false,
+            editColor: false,
         }
     },
     methods: {
-        toggleEditMode(){
-            console.log('toggle edit')
+        toggleEditMode() {
             this.editMode = !this.editMode
         },
-        changeColor(color){
-        //   this.style.backgroundColor = color
-          this.note.style.backgroundColor = color
-          keepService.saveNote(this.note)
-          .then(note =>{
-              console.log(note.id, 'colorChange saved')
-          })
+        changeColor(color) {
+            this.note.style.backgroundColor = color
+            keepService.saveNote(this.note)
+                .then(note => {
+                    console.log(note.id, 'colorChange saved')
+                })
         },
-        toggleEditColor(){
-            this.editColor = !this.editColor
+        activateEditColor() {
+            this.editColor = true
         },
-        togglePinNote(){
+        inactivateEditColor() {
+            this.editColor = false
+        },
+        togglePinNote() {
             this.note.isPinned = !this.note.isPinned
             keepService.saveNote(this.note)
-            .then(note =>{
-                console.log(note.id, 'pinned state saved')
-            })
+                .then(note => {
+                    console.log(note.id, 'pinned state saved')
+                })
         }
     },
-    // created(){
-    //     this.setColors()
-    // }
 }
 
-{/* <button @click.stop="$emit('remove')">x</button>       */}
+{/* <button @click.stop="$emit('remove')">x</button>       */ }
+
+// v-if="editColor"

@@ -25,7 +25,7 @@ export default {
     `,
    methods: {
        toggleMenu(){
-        document.body.classList.toggle('menu-open')
+         document.body.classList.toggle('menu-open')
        }
    }
 }

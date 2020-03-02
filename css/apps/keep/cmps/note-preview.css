@@ -32,8 +32,16 @@
 }
 .note-color-picker {
     margin-top: 10px;
-    z-index: 1;
+    visibility: hidden;
+    transition: .3s;
+    opacity: 0;
 }
+
+.note-color-picker.shown {
+    visibility: visible;
+    opacity: 1;
+}
+
 .note-color-picker i {
     font-size: 1.5rem;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
