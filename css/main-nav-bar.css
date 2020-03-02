@@ -18,7 +18,13 @@
     text-decoration: none;
     color: #ffffff;
     font-size: 1.5rem;
+    transition: 1s;
 }
+
+.links-nav a:hover {
+    color: #FFEB3B;
+}
+
 
 /* maybe without .links-nav  */
 

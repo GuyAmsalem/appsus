@@ -63,7 +63,7 @@ function getEmptyNote(type = 'noteText') {
         isPinned: false,
         info: {},
         style: {
-            backgroundColor: '#e98074'
+            backgroundColor: '#ffa350'
         }
     }
     if (type === 'noteText') emptyNote.info.txt = ''

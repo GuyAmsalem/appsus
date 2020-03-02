@@ -1,5 +1,6 @@
 import {router} from './routes.js'
 import mainNavBar from './general/cmps/main-nav-bar.cmp.js'
+import mainFooter from './general/cmps/main-footer.cmp.js'
 import userMsg from './general/cmps/user-msg.cmp.js'
 
 new Vue({
@@ -13,14 +14,13 @@ new Vue({
                 <user-msg></user-msg>
             </header>
             <router-view></router-view>
-            <footer class="main-footer flex column align-center">
-                Ran and Guy coffeerights &copy; 2020 
-            </footer>
+            <main-footer></main-footer>
         </section>
     `,
     components:{
         mainNavBar,
         userMsg,
+        mainFooter
     },
     methods: {
        toggleMenu(){
