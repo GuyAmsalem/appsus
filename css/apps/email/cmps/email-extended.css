@@ -1,4 +1,7 @@
 
-.extended-subject  , .extended-subject {
+.email-extended-container {
+    padding: 0 10px;
+}
+.extended-subject {
     margin: 10px 0;
 }

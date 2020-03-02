@@ -9,23 +9,13 @@ export default {
         </article>
     `,
     props: ['email'],
-    methods: {
-        getPreviewTxt() {
-            const subject = this.email.subject
-            const body = this.email.body
-            const txt = subject + ' - ' + body
-            console.log(txt);
-            
-            this.previewTxt = utilService.getShortTxt(txt, 50)
-        },
-     
-    },
+  
     computed: {
         txtToShow() {
             const subject = this.email.subject
             const body = this.email.body
             const txt = subject + ' - ' + body
-            return utilService.getShortTxt(txt, 50)
+            return utilService.getShortTxt(txt, 70)
         },
         timeToShow() {
             return moment(this.email.sendAt).format('LT');

@@ -41,7 +41,7 @@ export default {
      
     },
     created() {
-        this.emailBodyTxt = utilService.getShortTxt(this.email.body, 150) 
+        this.emailBodyTxt = utilService.getShortTxt(this.email.body, 350) 
     }
 
 }

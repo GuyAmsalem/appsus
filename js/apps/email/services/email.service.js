@@ -15,31 +15,34 @@ const EMAIL_KEY = 'emailDB'
 var emailDB = storageService.load(EMAIL_KEY) || _createEmails()
 
 function _createEmails() {
-        var samplesEmails = [_createEmail({name:'ran',emailAdrress: 'ran@gmail.com'}),
-        _createEmail({name:'guy',emailAdrress: 'guy@gmail.com'})]
+        var samplesEmails = []
+        for (let i = 0; i < 25; i++) {
+            let senderName = utilService.getRandomName()
+            let recipientName = (Math.random() > 0.6)? 'me' : utilService.getRandomName()
+            samplesEmails.push(_createEmail(senderName, recipientName))
+        }
         storageService.store(EMAIL_KEY, samplesEmails)
     return samplesEmails
 }
 
-function _createEmail(sender){
+function _createEmail(senderName ,recipientName){
     return {
         id: utilService.makeId(),
         sender : {
-            name: sender.name,
-            emailAdrress: sender.emailAdrress
+            name: senderName,
+            emailAdrress: senderName + '@gmail.com'
         },
-        recipient: 'Guy',
-        subject: 'Wassap brooooooooooooooooooooooooo?', 
-        body: utilService.makeLorem(100), 
+        recipient: recipientName,
+        subject: utilService.makeLorem(30), 
+        body: utilService.makeLorem(150), 
         isRead: false, 
         sentAt : Date.now(),
         folders: {
-            inbox: true,
+            inbox: (recipientName === 'me')? true : false,
             star: false,
-            sentMail: false,
+            sentMail: (senderName === 'Guy')? true : false,
             draft: false
-        }
-        
+        } 
     }
 }
 

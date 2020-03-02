@@ -24,11 +24,12 @@ export default {
     <div class="compose-form-row">
         <textarea class="compose-input" rows="20" v-model.trim="email.body" required></textarea>
     </div>
-        
-    <router-link to="/email/list/inbox">
-        <button><i class="fas fa-arrow-left"></i></button>
-    </router-link>
-    <button type="submit">Send</button>
+    <section class="compose-btn-container flex space-between"> 
+        <router-link to="/email/list/inbox">
+            <button><i class="fas fa-arrow-left"></i></button>
+        </router-link>
+        <button type="submit">Send</button>
+    </section
     </form>
 
 </section>
