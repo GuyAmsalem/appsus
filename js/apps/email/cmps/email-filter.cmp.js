@@ -18,7 +18,7 @@ export default {
     `,
     data() {
         return {
-            filterBy: {txt: '', read: 'All', folder: ''}
+            filterBy: {txt: '', read: 'All', folder: 'inbox'}
         }
     },
     watch: {
