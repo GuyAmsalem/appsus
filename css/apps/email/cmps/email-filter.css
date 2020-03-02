@@ -1,10 +1,17 @@
 
 .email-filter {
-    text-align: center;
+    text-align: start;
+    display: grid;
+    grid-template-columns: 6fr 2fr;
     margin: 5px;
 }
 
-
-.email-filter-select {
-    padding: 1.1px;
+.email-filter >* {
+    padding: 5px;
+    margin: 0;
+    width: 100%;
 }
+
+/* .email-filter-select {
+    padding: 1.1px;
+} */
