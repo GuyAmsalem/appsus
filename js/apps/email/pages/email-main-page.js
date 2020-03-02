@@ -11,8 +11,8 @@ export default {
     `,
     data() {
         return {
-            emails: null,
-            filterBy: null
+            emails: [],
+            filterBy: {txt: '', read: 'All', folder: 'inbox'}
         }
     },
     computed: {
@@ -27,7 +27,7 @@ export default {
             )
             //filter by read/unread
             if (this.filterBy.read !== 'All') {
-                let isRead = (this.filterBy.read === 'Read') ? true : false
+                let isRead = (this.filterBy.read === 'Read')? true : false
                 filteredEmails = filteredEmails.filter(email => email.isRead === isRead)
             }
             //filter by folder

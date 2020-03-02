@@ -22,7 +22,7 @@ export default {
     </div>
 
     <div class="compose-form-row">
-        <input class="compose-input" required type="textarea" v-model.trim="email.body"/>
+        <textarea class="compose-input" rows="15" v-model.trim="email.body" required></textarea>
     </div>
         
     <router-link to="/email/list/inbox">
