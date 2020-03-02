@@ -34,4 +34,3 @@ export default {
 }
 
 
-{/* <button @click="$emit('remove', currCar.id)">x</button> */ }

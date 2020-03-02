@@ -1,0 +1,25 @@
+.about-section {
+    margin: 0 auto;
+    width: 40%;
+    text-align: center;
+    font-size: 1.6rem;
+}
+
+@media (max-width: 1000px) {
+    .about-section {
+        width: 50%;
+    }
+}
+
+@media (max-width: 800px) {
+    .about-section {
+        width: 60%;
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 650px) {
+    .about-section {
+        width: 80%;
+    }
+}

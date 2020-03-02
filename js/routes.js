@@ -10,30 +10,23 @@ import emailMainPage from './apps/email/pages/email-main-page.js'
 const routes = [
     { path: '/', component: home },
     { path: '/keep', component: keepApp },
-    { path: '/email', component: emailApp,
-    children:[
-        { path: '', component: emailMainPage},
-        { path: 'details/:id', component: emailDetails},
-        { path: 'compose', component: emailCompose},
-        { path: 'list/:filterBy?', component: emailMainPage},   
-    ] 
+    {
+        path: '/email', component: emailApp,
+        children: [
+            { path: '', component: emailMainPage },
+            { path: 'details/:id', component: emailDetails },
+            { path: 'compose', component: emailCompose },
+            { path: 'list/:filterBy?', component: emailMainPage },
+        ]
     },
     { path: '/about', component: about },
 
 
 ]
 
-export const router = new VueRouter({routes})
+export const router = new VueRouter({ routes })
 
 
 
 
 
-/*
-
-/email/compose         ===> create
-/email/:id             ===> details
-/email/list/:filterBy? ===> list
-
-
-*/

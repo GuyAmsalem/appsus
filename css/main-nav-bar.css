@@ -11,7 +11,6 @@
     font-size: 2rem;
 }
 
-
 .links-nav {
     width: 40%;
 }
@@ -26,7 +25,6 @@
 .links-nav a:hover {
     color: #FFEB3B;
 }
-
 
 /* maybe without .links-nav  */
 
@@ -65,7 +63,7 @@
         transition: transform .8s, box-shadow .3s;
         z-index: 3;
     }
-    .links-nav a{
+    .links-nav a {
         font-size: 1.5rem;
     }
     .menu-open .links-nav {
@@ -76,4 +74,3 @@
         display: block;
     }
 }
-
