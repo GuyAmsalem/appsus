@@ -3,6 +3,7 @@
 export default {
     template: `
     <section class="email-side-nav">
+    
         <router-link to="/email/list/inbox">
             <p>Inbox <span>{{unread}}</span></p>
         </router-link>

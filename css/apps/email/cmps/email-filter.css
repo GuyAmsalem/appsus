@@ -3,7 +3,7 @@
     text-align: start;
     display: grid;
     grid-template-columns: 6fr 2fr;
-    margin: 5px;
+    margin: 10px 0;
 }
 
 .email-filter >* {

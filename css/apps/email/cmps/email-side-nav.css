@@ -1,0 +1,12 @@
+
+
+
+.email-side-nav >* {
+    text-decoration: none;
+    color: black;
+}
+
+.email-side-nav>* :hover ,
+.email-side-nav>* :active {
+    background-color: #d2dade;
+}
