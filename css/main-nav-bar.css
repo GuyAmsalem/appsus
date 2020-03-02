@@ -6,6 +6,8 @@
 .logo {
     font-family: 'orbitron', sans-serif;
     color: #FFEB3B;
+    text-decoration: none;
+    display: inline-block;
     font-size: 2rem;
 }
 

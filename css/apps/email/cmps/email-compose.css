@@ -8,13 +8,16 @@ textarea, select, input, button { outline: none; }
 }
 .email-compose-title {
     background-color: #8E8D8A ;
-    color: #eae7dc;
+    color: white;
+    letter-spacing: 1px;
     padding: 10px;
     margin: 0;
 }
 
 .compose-input{
     border: none;
-    background-color: #EAE7DC;
+    width: 90%;
+    background-color: #ececec;
+
 }
 

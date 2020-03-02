@@ -13,10 +13,14 @@
 }
 
 .compose-btn {
-    padding: 10px 15px;
-    border: none;
+    padding: 5px 15px;
+    font-family: 'patrick';
+    
+    font-size: 1.3em;
+    border: 1px solid #FFEB3B;
     border-radius: 1rem;
     margin-top: 10px;
+    cursor: pointer;
 }
 
 .compose-btn-mobile-container {
@@ -36,9 +40,18 @@
     cursor: pointer;
 }
 
+
+
 @media screen and (max-width: 650px) {
     .email-app-container {
+        padding: 0;
+    }
+    .email-app-container {
         grid-template-columns: 1fr;
+    }
+    .email-side-nav {
+        background-color: grey;
+        padding: 5px;
     }
     .compose-btn {
        display: none;
@@ -46,5 +59,23 @@
     .compose-btn-mobile-container {
         display: block;
     }
-
+    .email-side-nav-links {
+        position: absolute;
+        top: -500px;
+        z-index: 1;
+        background-color: grey;
+        width: 80%;
+        transition: .4s ease-in-out;
+    }
+    .email-nav-link {
+        color: white ;
+        text-align: center;
+    }    
+    .email-burger-btn {
+       display: block;
+    }
+    .email-side-nav-open {
+        top: 38px;
+    }
 }
+
