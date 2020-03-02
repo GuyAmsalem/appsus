@@ -4,7 +4,7 @@ export default {
             <div class="note-img flex col" >
                 <img :src="note.info.url"/>
                 <div class="note-icons-container flex space-between">
-                    <i class="far fa-image"></i>
+                    <i class="far fa-image note-img-icon"></i>
                     <nav class="note-features flex space-around">
                         <i class="fas fa-thumbtack" @click="$emit('pin')" 
                         v-bind:class="{ 'fas fa-thumbtack': !note.isPinned, 'fas fa-thumbtack pinned': note.isPinned }"></i>

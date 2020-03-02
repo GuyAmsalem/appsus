@@ -18,6 +18,24 @@
   cursor: pointer;
 }
 
+.note-selection .fas.fa-font.active {
+ 
+  color: #51a255;
+}
+
+.note-selection .far.fa-image.active {
+  color: #03A9F4;
+}
+
+.note-selection .fas.fa-video.active {
+  color: #ff0000;
+}
+
+.note-selection .fas.fa-list.active {
+  color: #009688;
+}
+
+
 @media (max-width: 1142px) {
   .note-input {
     font-size: 1.4rem;

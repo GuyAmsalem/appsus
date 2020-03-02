@@ -5,7 +5,6 @@
 }
 
 html {
-    background-color: #eae7dc;
     font-family: 'patrick', sans-serif;
 }
 
@@ -16,6 +15,7 @@ html {
 
 body {
     margin: 0 auto;
+    background-color: #ececec;
 }
 
 /* helpers */

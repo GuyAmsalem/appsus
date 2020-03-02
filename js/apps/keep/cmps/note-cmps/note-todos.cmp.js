@@ -10,7 +10,7 @@ export default {
                     v-bind:class="{ '': !todo.isDone, 'todo-done': todo.isDone }">{{todo.txt}}</li>
                 </ul>
                 <div class="note-icons-container flex space-between">
-                    <i class="fas fa-list"></i>
+                    <i class="fas fa-list note-todos-icon"></i>
                     <nav class="note-features flex space-around">
                         <i class="fas fa-thumbtack" @click="$emit('pin')" 
                         v-bind:class="{ 'fas fa-thumbtack': !note.isPinned, 'fas fa-thumbtack pinned': note.isPinned }"></i>

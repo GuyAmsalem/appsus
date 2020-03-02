@@ -7,6 +7,13 @@ import todosInput from './todos-input.cmp.js'
 
 
 
+{/* <input type="radio" id="male" name="gender" value="male">
+<label for="male">Male</label><br>
+<input type="radio" id="female" name="gender" value="female">
+<label for="female">Female</label><br>
+<input type="radio" id="other" name="gender" value="other">
+<label for="other">Other</label> */}
+
 export default {
     template: `
     <section class="note-add-container flex center">
@@ -19,10 +26,10 @@ export default {
                     ></component>
         </form>
         <div class="note-selection flex space-around align-center">
-            <i @click="changeType('textInput')" class="fas fa-font"></i>
-            <i @click="changeType('imgInput')" class="far fa-image"></i>
-            <i @click="changeType('videoInput')" class="fas fa-video"></i>
-            <i @click="changeType('todosInput')" class="fas fa-list"></i>
+            <i @click="changeType('textInput')" class="fas fa-font" :class="inputActive('textInput')"></i>
+            <i @click="changeType('imgInput')" class="far fa-image" :class="inputActive('imgInput')"></i>
+            <i @click="changeType('videoInput')" class="fas fa-video" :class="inputActive('videoInput')"></i>
+            <i @click="changeType('todosInput')" class="fas fa-list" :class="inputActive('todosInput')"></i>
         </div>
     </section>
     `,
@@ -54,7 +61,10 @@ export default {
                     eventBus.$emit(EVENT_SHOW_MSG, { txt: 'Note Saved', type: 'success' })
                     this.note = keepService.getEmptyNote()
                 })
-        }
+        },
+        inputActive(type) {
+            return { 'active': this.type === type }
+        },
     },
     created() {
         keepService.getInputs()

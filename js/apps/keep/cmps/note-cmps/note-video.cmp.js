@@ -4,7 +4,7 @@ export default {
         <div>
             <iframe width="100%"  :src="formattedVidLink"></iframe>
             <div class="note-icons-container flex space-between">
-                <i class="fas fa-video"></i>
+                <i class="fas fa-video note-video-icon"></i>
                 <nav class="note-features flex space-around">
                     <i class="fas fa-thumbtack" @click="$emit('pin')" 
                     v-bind:class="{ 'fas fa-thumbtack': !note.isPinned, 'fas fa-thumbtack pinned': note.isPinned }"></i>

@@ -5,7 +5,7 @@ export default {
           <div class="text-note-container">
               <long-text :txt="note.info.txt" :limit.number="40"></long-text>
               <div class="note-icons-container flex space-between">
-                <i class="fas fa-font"></i>
+                <i class="fas fa-font note-text-icon"></i>
                 <nav class="note-features flex space-around">
                     <i class="fas fa-thumbtack" @click="$emit('pin')" 
                     v-bind:class="{ 'fas fa-thumbtack': !note.isPinned, 'fas fa-thumbtack pinned': note.isPinned }"></i>
