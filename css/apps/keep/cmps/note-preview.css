@@ -2,11 +2,17 @@
     max-width: 420px;
     padding: 10px;
     border-radius: 1rem;
-    box-shadow: -1px 3px 5px 0px rgba(204,204,204,1);
+    box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
     margin: 15px;
     break-inside: avoid;
     font-size: 1.3rem;
+    transition: .3s;
 }
+
+.user-note-container:hover{
+    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75);
+}
+
 
 
 .note-features {
@@ -20,6 +26,7 @@
 
 .fas.fa-thumbtack.pinned{
     color: red;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 .fas.fa-trash-alt.colored{
@@ -45,6 +52,7 @@
 .note-color-picker i {
     font-size: 1.5rem;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    transition: .3s;
     
 }
 
@@ -54,21 +62,21 @@
 }
 
 .note-color-picker i:nth-child(1) {
-    color: #d8c3a5;
+    color: #ffffff;
 }
 
 .note-color-picker i:nth-child(2) {
-    color: #8e8d8a;
+    color: #f78888;
 }
 
 .note-color-picker i:nth-child(3) {
-    color: #e98074;
+    color: #f3d250;
 }
 
 .note-color-picker i:nth-child(4) {
-    color: #e85a4f;
+    color: #90ccf4;
 }
 
 .note-color-picker i:nth-child(5) {
-    color: #fa291a;
+    color: #4caf50;
 }

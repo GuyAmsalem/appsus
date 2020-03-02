@@ -13,7 +13,7 @@ new Vue({
                 <user-msg></user-msg>
             </header>
             <router-view></router-view>
-            <footer>
+            <footer class="main-footer flex column align-center">
                 Ran and Guy coffeerights &copy; 2020 
             </footer>
         </section>

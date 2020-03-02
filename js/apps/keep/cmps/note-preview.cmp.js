@@ -22,11 +22,11 @@ export default {
             <transition name="fade">
                 <div v-bind:class="{ 'note-color-picker flex space-around': !editColor, 'note-color-picker flex space-around shown': editColor }" 
                 @mouseleave="inactivateEditColor" @mouseover="activateEditColor">
-                    <i @click="changeColor('#d8c3a5')" class="fas fa-brush"></i>
-                    <i @click="changeColor('#8e8d8a')" class="fas fa-brush"></i>
-                    <i @click="changeColor('#e98074')" class="fas fa-brush"></i>
-                    <i @click="changeColor('#e85a4f')" class="fas fa-brush"></i>
-                    <i @click="changeColor('#fa291a')" class="fas fa-brush"></i>   
+                    <i @click="changeColor('#ffffff')" class="fas fa-brush"></i>
+                    <i @click="changeColor('#f78888')" class="fas fa-brush"></i>
+                    <i @click="changeColor('#f3d250')" class="fas fa-brush"></i>
+                    <i @click="changeColor('#90ccf4')" class="fas fa-brush"></i>
+                    <i @click="changeColor('#4caf50')" class="fas fa-brush"></i>   
                 </div>
             </transition>  
             <note-edit  v-if="editMode" :note="note" @edit="toggleEditMode"></note-edit>

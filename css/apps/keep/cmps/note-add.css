@@ -1,40 +1,41 @@
 .note-add-container {
-    margin: 0 auto;
-    width: 40%;
+  margin: 0 auto;
+  width: 40%;
+  margin-bottom: 30px;
 }
 
 .note-input {
   font-size: 1.7rem;
   border-radius: 1rem;
   padding: 4px;
+  text-align: center;
 }
 
 .note-selection {
-    width: 40%;
+  width: 40%;
 }
 
 .note-selection i {
   font-size: 1.7rem;
   cursor: pointer;
+  transition: .3s;
 }
 
-.note-selection .fas.fa-font.active {
- 
+.note-selection .fas.fa-font.active, .note-selection .fas.fa-font:hover {
   color: #51a255;
 }
 
-.note-selection .far.fa-image.active {
+.note-selection .far.fa-image.active, .note-selection .far.fa-image:hover {
   color: #03A9F4;
 }
 
-.note-selection .fas.fa-video.active {
+.note-selection .fas.fa-video.active, .note-selection .fas.fa-video:hover {
   color: #ff0000;
 }
 
-.note-selection .fas.fa-list.active {
+.note-selection .fas.fa-list.active,  .note-selection .fas.fa-list:hover{
   color: #009688;
 }
-
 
 @media (max-width: 1142px) {
   .note-input {
@@ -43,18 +44,15 @@
   .note-selection i {
     font-size: 1.4rem;
   }
-
-
 }
 
-@media (max-width: 1006px){
+@media (max-width: 1006px) {
   .note-add-container {
     width: 45%;
   }
-
 }
 
-@media (max-width: 873px){
+@media (max-width: 873px) {
   .note-add-container {
     flex-direction: column;
     align-items: center;
@@ -62,18 +60,15 @@
   .note-input {
     margin-bottom: 10px;
   }
-  
-
 }
 
-@media (max-width: 575px){
+@media (max-width: 575px) {
   .note-add-container {
     width: 55%;
   }
 }
 
-
-@media (max-width: 400px){
+@media (max-width: 400px) {
   .note-add-container {
     width: 70%;
   }
