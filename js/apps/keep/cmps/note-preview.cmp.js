@@ -19,7 +19,6 @@ export default {
             @pin="togglePinNote"
             >
             </component>
-            <transition name="fade">
                 <div v-bind:class="{ 'note-color-picker flex space-around': !editColor, 'note-color-picker flex space-around shown': editColor }" 
                 @mouseleave="inactivateEditColor" @mouseover="activateEditColor">
                     <i @click="changeColor('#ffa350')" class="fas fa-brush"></i>
@@ -28,7 +27,6 @@ export default {
                     <i @click="changeColor('#90ccf4')" class="fas fa-brush"></i>
                     <i @click="changeColor('#4caf50')" class="fas fa-brush"></i>   
                 </div>
-            </transition>  
             <note-edit  v-if="editMode" :note="note" @edit="toggleEditMode"></note-edit>
         </div>
     `,
@@ -72,7 +70,3 @@ export default {
         }
     },
 }
-
-{/* <button @click.stop="$emit('remove')">x</button>       */ }
-
-// v-if="editColor"

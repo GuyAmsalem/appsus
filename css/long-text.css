@@ -1,10 +1,10 @@
-.long-text-btn{
+.long-text-btn {
     cursor: pointer;
     color: grey;
     transition: .3s;
 }
 
-.long-text-btn:hover{
+.long-text-btn:hover {
     cursor: pointer;
     color: rgb(83, 83, 83);
 }

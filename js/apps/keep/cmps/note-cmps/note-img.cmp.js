@@ -17,9 +17,6 @@ export default {
             </div>
     `,
     props: ['note'],
-    created() {
-        console.log('info!!!!', this.note.info)
-    },
     data() {
         return {
             hoverTrash: false

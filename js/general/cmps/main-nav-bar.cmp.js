@@ -1,5 +1,5 @@
 export default {
-    template:`
+    template: `
         <nav class="main-nav-bar flex space-between align-center">
             <div class="logo">AppSus</div>
 
@@ -20,10 +20,10 @@ export default {
                 <button class="menu-btn" @click="toggleMenu()">☰</button>
         </nav>
     `,
-   methods: {
-       toggleMenu(){
-         document.body.classList.toggle('menu-open')
-       }
-   }
+    methods: {
+        toggleMenu() {
+            document.body.classList.toggle('menu-open')
+        }
+    }
 }
 

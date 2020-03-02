@@ -11,14 +11,14 @@ export default {
             isReadMore: false
         }
     },
-    props: ['txt','limit'],
+    props: ['txt', 'limit'],
     computed: {
         shortTxt() {
             const txt = this.txt
             if (this.isReadMore && txt.length > this.limit) {
                 return txt
             } else if (!this.isReadMore && txt.length > this.limit) {
-                return txt.substring(0, this.limit -4) + '...'
+                return txt.substring(0, this.limit - 4) + '...'
             } else {
                 return txt
             }

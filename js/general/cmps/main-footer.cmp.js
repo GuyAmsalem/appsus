@@ -1,5 +1,5 @@
 export default {
-    template:`
+    template: `
         <footer class="main-footer flex col align-center">
             <div class="logo">AppSus</div>
             <div>
@@ -7,9 +7,4 @@ export default {
             </div>
         </footer>
     `,
-   methods: {
-       toggleMenu(){
-         document.body.classList.toggle('menu-open')
-       }
-   }
 }
