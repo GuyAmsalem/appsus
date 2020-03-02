@@ -10,6 +10,11 @@ export default {
         <router-link to="/email/compose">
             <button class="compose-btn">Compose</button>
         </router-link>
+        <router-link class="compose-btn-mobile-container" to="/email/compose" >
+            <button class="compose-btn-mobile">
+                <i class="fas fa-pencil-alt"></i>
+            </button>
+        </router-link>
         <email-side-nav :unread="unreadEmails"></email-side-nav>
       </div>
 
