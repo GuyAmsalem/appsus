@@ -1,6 +1,7 @@
 .email-pre-card {
     display: flex;
     justify-content: space-between;
+    cursor: pointer;
 }
 
 .email-pre-card >* {
